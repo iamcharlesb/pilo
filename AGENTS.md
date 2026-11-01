@@ -1,5 +1,6 @@
 # Repository instructions
 
+- When writing emails for the user, keep them polite, short, and focused on the request. Include only necessary background; avoid recounting the conversation or extensive history.
 - Preserve unrelated work in the parent repository and browser-agent submodule.
 - Model versions, provider credentials, pricing and operational limits belong in environment configuration. Never print or commit secrets.
 - Keep policy checks and known event handling in application code. A notification must not implicitly start a model, browser action or paid recurring job.
