@@ -1,19 +1,21 @@
 Required Notice: Copyright (c) 2026 Charles Barathidass.
 Required Notice: Pilo was created by Charles Barathidass (@iamcharlesb). https://github.com/iamcharlesb/pilo
+Required Notice: Persistent credit required — LinkedIn https://www.linkedin.com/in/iamcharlesb/ and X https://x.com/iamcharlesb
 
-Pilo is source-available under the PolyForm Noncommercial License 1.0.0.
-Commercial use is not permitted under this license. Contact the author to
-request separate written permission for commercial use.
+Pilo is licensed under the Pilo Attribution License 1.0 (see LICENSE).
 
-Redistributions, including modified copies, must retain the Required Notice
-lines above and include the license terms or their official URL, as specified
-in the license. Preserve applicable third-party notices and license terms.
+You may use Pilo for personal, noncommercial, commercial, and enterprise
+purposes, provided you keep the Required Notice lines and the persistent
+author credit (including LinkedIn and X links) in redistributions, product
+UIs, About screens, and documentation as specified in LICENSE.
 
-Connect with the author: https://www.linkedin.com/in/iamcharlesb/
-If Pilo is useful to you, you are invited to connect and share what you build.
-A LinkedIn connection is optional and is not a condition of the license.
+Connect with the author:
+- LinkedIn: https://www.linkedin.com/in/iamcharlesb/
+- X: https://x.com/iamcharlesb
+- GitHub: https://github.com/iamcharlesb
 
 Earlier versions distributed under Apache-2.0 retain the permissions granted
-with those versions. This license change does not revoke existing Apache
-licenses, claim exclusive rights to third-party code, or change dependency
-licenses. The retained Apache license text is in LICENSE-APACHE-2.0.
+with those versions. Earlier PolyForm Noncommercial copies remain subject to
+that license for those copies. This license change does not revoke existing
+Apache licenses, claim exclusive rights to third-party code, or change
+dependency licenses. The retained Apache license text is in LICENSE-APACHE-2.0.

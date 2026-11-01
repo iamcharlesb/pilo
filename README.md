@@ -87,22 +87,24 @@ Pilo is early stage. Contributions to reliability, usage efficiency, documentati
 
 ## License
 
-Pilo is **source-available for noncommercial use** under the
-[PolyForm Noncommercial License 1.0.0](LICENSE). Commercial use requires
-separate written permission from Charles Barathidass.
+Pilo is licensed under the [Pilo Attribution License 1.0](LICENSE): free for
+personal, noncommercial, commercial, and enterprise use, with **required
+persistent credit** to Charles Barathidass including LinkedIn and X links.
 
-Redistributed copies and modified versions must preserve the author credits
-in [NOTICE](NOTICE) and provide the license terms or their official URL.
-Required attribution: **Pilo — created by Charles Barathidass (@iamcharlesb)**.
+Redistributed copies, product UIs, About screens, and documentation must keep
+the Required Notice lines in [NOTICE](NOTICE) and the credit:
 
-Noncommercial restrictions mean this is not an OSI-approved open-source license.
-Earlier Apache-2.0 releases retain their original permissions; see
-[the retained Apache license](LICENSE-APACHE-2.0). Third-party components retain
-their own licenses.
+**Pilo — created by Charles Barathidass (@iamcharlesb)** ·
+[LinkedIn](https://www.linkedin.com/in/iamcharlesb/) ·
+[X](https://x.com/iamcharlesb)
 
-You are welcome to [connect with me on LinkedIn](https://www.linkedin.com/in/iamcharlesb/)
-to share feedback or discuss commercial licensing. Connecting is optional.
+This is MIT-style in permissions but **not** the OSI MIT License, because of
+the persistent attribution requirement. Earlier Apache-2.0 releases retain
+their original permissions; see [LICENSE-APACHE-2.0](LICENSE-APACHE-2.0).
+Third-party components retain their own licenses.
 
 ## Creator
 
-**Charles Barathidass · [@iamcharlesb](https://github.com/iamcharlesb)**
+**Charles Barathidass · [@iamcharlesb](https://github.com/iamcharlesb)** ·
+[LinkedIn](https://www.linkedin.com/in/iamcharlesb/) ·
+[X](https://x.com/iamcharlesb)
