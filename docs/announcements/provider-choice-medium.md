@@ -1,6 +1,8 @@
 # Draft for Medium
 
-Status: not published.
+Status: saved in Medium; publication pending the user's subscriber-notification preference.
+
+Editor: https://medium.com/p/0a40a4f12ede/edit
 
 ## Pilo’s latest update makes model choice part of the workflow
 
@@ -53,3 +55,5 @@ Pilo is still early. Hosted model calls can incur charges, and the public reposi
 The goal of this release is straightforward: fewer setup hurdles, more control over model choice, and clearer expectations about what the runtime sends and spends.
 
 Project and setup guide: https://github.com/iamcharlesb/pilo
+
+*Drafted with AI assistance; implementation details checked against the code and tests. Provider behavior was tested with mocked API responses, not live paid requests to every provider.*

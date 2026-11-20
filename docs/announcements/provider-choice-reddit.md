@@ -1,6 +1,8 @@
-# Draft for Reddit
+# Reddit release update
 
-Status: not published. Choose a subreddit and check its self-promotion rules before posting.
+Status: published to r/SideProject as u/Stunning_Progress_19 on November 20, 2026. Verified the post title and body at its permalink.
+
+Post: https://www.reddit.com/r/SideProject/comments/1y1g6jc/i_updated_my_local_ai_agent_app_so_switching/
 
 ## Title
 
