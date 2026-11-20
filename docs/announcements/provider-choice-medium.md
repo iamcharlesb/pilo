@@ -4,15 +4,13 @@ Status: saved in Medium; publication pending the user's subscriber-notification 
 
 Editor: https://medium.com/p/0a40a4f12ede/edit
 
-## Pilo’s latest update makes model choice part of the workflow
+## Qwen is now on Pilo
 
 ### A simpler setup, a shared provider factory, and a more deliberate approach to context costs
 
-An agent app should make it easy to start with the model provider you already use. It should also let you change that choice as your tasks change.
+You can now connect Qwen to Pilo from Settings: choose Qwen, paste your API key, and save. The model and endpoint are prefilled, with regional overrides available.
 
-That is the focus of this Pilo update.
-
-Pilo is the local desktop bot workspace I’m building for research, writing, coding, and permitted browser tasks. The latest version adds a simpler connection flow for OpenAI, Qwen, and Kimi, alongside the existing model options.
+Pilo is the local desktop bot workspace I’m building for research, writing, coding, and permitted browser tasks. This update adds a simpler connection flow for Qwen, Kimi, and OpenAI, alongside the existing model options.
 
 ### From configuration work to a short Settings flow
 
