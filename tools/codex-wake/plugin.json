@@ -1,0 +1,7 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "codex-wake",
+  "version": "0.1.0",
+  "description": "Local observer events and durable timeout wakeups for Codex",
+  "license": "MIT"
+}

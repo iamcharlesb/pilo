@@ -77,6 +77,7 @@ Commit or save your local edits before updating. If a Pilo server is already run
 
 ## More help and contributing
 
+- [Codex Wake](tools/codex-wake/README.md): a standalone MIT-licensed MCP event observer and timeout runner for Codex, independent of the private application submodule.
 - [Application documentation](node/browser_agent/README.md): provider configuration, browser connection, approvals, and advanced setup.
 - [CLI setup](node/browser_agent/docs/cli.md): terminal use without the desktop window.
 - [Operating boundaries](node/browser_agent/docs/buddy-bot-production.md): current limitations and deployment details.
