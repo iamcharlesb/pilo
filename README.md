@@ -8,7 +8,7 @@ Pilo helps you delegate research, writing, coding, marketing, job-search prepara
 
 ## Before you start
 
-- Install Git and Node.js 18 or newer, with npm.
+- Install Git and Node.js 22.12 or newer, with npm.
 - You need access to [iamcharlesb/browser-agent](https://github.com/iamcharlesb/browser-agent), the separate **private** repository containing the application. This public repository alone is not a complete app download.
 - Have your chosen model provider credentials and model ID ready, or configure a local model. Google sign-in and MongoDB are optional.
 
@@ -33,11 +33,19 @@ If cloning reports **Repository not found** for `browser-agent`, sign in to GitH
 
 ## Connect a model
 
-1. Open **Settings** in Pilo.
-2. Configure your provider connection, credentials, and model selection.
-3. Select the configured model in the chat composer, then send a short message to check the connection.
+1. Open the gear icon → **Connect a model provider**.
+2. Choose **OpenAI**, **Qwen**, or **Kimi**, paste that provider's API key, and click **Save settings**. Suggested models and endpoints are prefilled. For Qwen, confirm the endpoint matches your key's region.
+3. Pilo selects the saved model. Use **Chat** and send a short test message; this makes a billable provider request. Saving settings makes no model request.
 
-Keep credentials local. You can also configure `node/browser_agent/.env` using its [environment reference](node/browser_agent/.env.example). Model versions, pricing, and operational limits are configuration settings. Local Engine is a limited fallback; a capable configured model is needed for general AI tasks.
+You can also configure an environment file:
+
+```sh
+cp node/browser_agent/.env.example node/browser_agent/.env
+```
+
+Edit `node/browser_agent/.env`, choose `BROWSER_AGENT_PROVIDER=openai`, `qwen`, or `kimi`, and fill **only** its `OPENAI_API_KEY`, `QWEN_API_KEY`, or `KIMI_API_KEY`. Leave `BROWSER_AGENT_MODEL` empty to use that provider's suggested model. Restart after editing the file manually. Never commit `.env` or paste credentials into chat.
+
+[Complete first-time setup and provider guide](node/browser_agent/docs/provider-setup.md) covers prerequisites, API-key creation links, every setup step, regional endpoints, custom providers, browser modes, and troubleshooting. [Environment example](node/browser_agent/.env.example) lists all settings. Google sign-in and MongoDB are optional.
 
 ## Start your first task
 
