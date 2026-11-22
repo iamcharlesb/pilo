@@ -1,10 +1,16 @@
 # Pilo
 
+[Roadmap](docs/pilo-roadmap.md) · [Features](FEATURES.md) · [What has changed](CHANGELOG.md)
+
 <img src="docs/assets/pilo-social.png" alt="Pilo and its specialist bots" width="480" />
 
 **Your Personal Bot inspired by Grok Bots — Source-Available**
 
 Pilo helps you delegate research, writing, coding, marketing, job-search preparation, and permitted browser actions to personal and specialist bots. It currently runs on your computer. Hosted model requests can still incur charges; reducing unnecessary token usage is a design goal, not a verified savings guarantee.
+
+## Independent AI assistants
+
+Named bots are AI assistants informed by public material. They are not the named people or employees of the named firms, and have no affiliation or endorsement from those people or firms, including Goldman Sachs, Google and Alphabet. Portraits identify public figures; they do not imply endorsement. Financial outputs are informational, not personalized financial advice. Verify sources, dates, assumptions and calculations before relying on them; returns are not guaranteed.
 
 ## Before you start
 
