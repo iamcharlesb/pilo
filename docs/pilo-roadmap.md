@@ -10,6 +10,9 @@ This roadmap describes planned product work, not shipped capabilities or committ
 - [x] Independence and financial-analysis disclaimer.
 - [x] Home navigation and restored run-status regression fixes.
 
+- [x] Named Huddle sessions, participant selection, shared discussion history and read-only multi-bot responses.
+- [x] Main-view animation for the selected bot and background-only sidebar animation.
+
 ## Next priorities
 
 - [ ] Broaden catalog coverage tests for filtering, onboarding, renamed profiles and keyboard navigation.

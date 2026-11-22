@@ -63,6 +63,14 @@ Edit `node/browser_agent/.env`, choose `BROWSER_AGENT_PROVIDER=openai`, `qwen`, 
 
 Start with a draft or research task so you can inspect the result before asking Pilo to take outward actions.
 
+## Huddles
+
+Use **New Huddle** in the sidebar to create a named session. Search the complete bot catalog, select participants, then choose **Create huddle**. The same catalog powers the main bot selector and includes built-in and custom bots. Selected bots are saved automatically when needed; you do not have to add them beforehand.
+
+Ask a question in the huddle to gather each selected bot's perspective, show attributed replies, and produce a shared synthesis. Follow-up questions use the session's conversation history. Sessions remain in the sidebar and reopen without starting model work. Use **Edit huddle** to change the name or participants once its work finishes or is stopped.
+
+Creating a huddle starts no model request. Sending a question may incur provider charges. Discussions and specialist research are read-only; the session does not authorize publication, transactions, or recurring jobs. The server's configured participant and time limits apply; failures and missing replies are reported explicitly. A configured conversational model is required.
+
 ## Update an existing installation
 
 From the Pilo repository folder:

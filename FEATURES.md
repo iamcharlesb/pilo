@@ -10,9 +10,18 @@
 - Public-figure portraits where verified source images are available, including Sundar Pichai.
 - Wall Street Analyst for public-company and market research; Goldman Sachs Analyst for independent valuation and transaction analysis.
 
+## Huddles
+
+Use **New Huddle** in the sidebar to create a named session. Search the complete bot catalog, select participants, then choose **Create huddle**. The same catalog powers the main bot selector and includes built-in and custom bots. Selected bots are saved automatically when needed; you do not have to add them beforehand.
+
+Ask a question in the huddle to gather each selected bot's perspective, show attributed replies, and produce a shared synthesis. Follow-up questions use the session's conversation history. Sessions remain in the sidebar and reopen without starting model work. Use **Edit huddle** to change the name or participants once its work finishes or is stopped.
+
+Creating a huddle starts no model request. Sending a question may incur provider charges. Discussions and specialist research are read-only; the session does not authorize publication, transactions, or recurring jobs. The server's configured participant and time limits apply; failures and missing replies are reported explicitly. A configured conversational model is required.
+
 ## Working with bots
 
 - Separate conversations, saved drafts, queued follow-ups and scoped Stop controls.
+- The open bot animates in the main view; sidebar animation is reserved for bots working in background conversations.
 - Background runs continue when you return Home; Home clears the selected bot's header, draft view and run controls.
 - Readable activity labels for live and restored runs, with expandable step details.
 - Browser profiles, local terminal tools, document artifacts, HTML previews, and source-linked research.
