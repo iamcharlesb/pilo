@@ -26,7 +26,7 @@ Creating a huddle starts no model request. Sending a question may incur provider
 - Readable activity labels for live and restored runs, with expandable step details.
 - Browser profiles, local terminal tools, document artifacts, HTML previews, and source-linked research.
 - Compact operating instructions, separate voice files, and playbooks loaded when relevant.
-- Real screen recording through `/record 10`, the Record screen button and Demo Director: live source preview, optional microphone narration, countdown, timed capture, 1080p presentation framing, playback and downloadable WebM artifacts.
+- Real screen recording through `/record 10`, the Record screen button and Demo Director: live source preview, optional microphone narration, countdown, timed capture, original-resolution capture with text-detail encoding, playback and downloadable WebM artifacts.
 
 ## Agent Gateway & Ollama Support
 
@@ -44,3 +44,5 @@ Pilo is a local, single-operator tool. Model providers can charge for requests. 
 The screen recorder includes an optional guided Pilo walkthrough with actual catalog and workspace Help clicks, a visible pointer and captions. It preserves drafts, stops automation on operator input, and never submits model work.
 
 Open `/demo` in the local Pilo web interface to play the guided walkthrough without recording. Optional local spoken narration plays with scene actions and is included directly in saved WebM audio, with optional microphone mixing.
+
+Screen recording uses a guided preview → record → download setup with one primary action per stage. Source-resolution encoding preserves UI detail without canvas resizing, and preview displays the captured dimensions before recording.
