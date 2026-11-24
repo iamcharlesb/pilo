@@ -30,6 +30,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm --prefix node/browser_agent ci
+      # The locked OpenAI v4 dependency has a Zod v3 optional peer; this app uses Zod v4.
+      - run: npm ci --legacy-peer-deps
+        working-directory: node/browser_agent
       - run: npx --prefix node/browser_agent playwright install --with-deps chromium
       - run: npm --prefix node/browser_agent test
