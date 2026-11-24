@@ -86,3 +86,6 @@ export * from "./safety";
 
 // Routing
 export * from "./routing";
+
+// Agent Gateway
+export * from "./gateway";

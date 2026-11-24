@@ -1,11 +1,11 @@
 {
-  "name": "fireworks-plus-plus",
+  "name": "pilo-runtime",
   "version": "0.1.0",
-  "description": "Fireworks++ \u2014 A TypeScript-first agentic AI framework for building LLM-powered applications",
+  "description": "Pilo \u2014 Pure Node.js / TypeScript agentic AI runtime, Agent Gateway, and specialist bot framework",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "fireworks-plus-plus": "./dist/cli.js"
+    "pilo-runtime": "./dist/cli.js"
   },
   "exports": {
     ".": {
@@ -17,6 +17,11 @@
       "import": "./dist/mcp/index.js",
       "require": "./dist/mcp/index.js",
       "types": "./dist/mcp/index.d.ts"
+    },
+    "./gateway": {
+      "import": "./dist/gateway/index.js",
+      "require": "./dist/gateway/index.js",
+      "types": "./dist/gateway/index.d.ts"
     }
   },
   "files": [
@@ -63,12 +68,20 @@
     "plugins",
     "workflows"
   ],
-  "author": "Fireworks++ Contributors",
+  "author": "Pilo Contributors",
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "docx": "^9.6.1",
     "pdf-lib": "^1.17.1",
     "pptxgenjs": "^4.0.1"
+  },
+  "overrides": {
+    "pptxgenjs": {
+      "image-size": "^2.1.0"
+    }
+  },
+  "resolutions": {
+    "**/image-size": "^2.1.0"
   },
   "devDependencies": {
     "typescript": "^5.8.2",
@@ -91,6 +104,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fireworks-plus-plus/fireworks-plus-plus"
+    "url": "https://github.com/iamcharlesb/pilo"
   }
 }

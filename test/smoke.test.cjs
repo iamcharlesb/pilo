@@ -119,6 +119,24 @@ test("DocumentTool and EditorTool expose the documented config shape", async () 
   assert.equal(await dynamicTool.run("ok"), "ok");
 });
 
+test("DocumentTool creates valid DOCX, PPTX and PDF artifacts with the installed dependencies", async () => {
+  const outputDir = await fs.mkdtemp(path.join(os.tmpdir(), "pilo-documents-"));
+  try {
+    const tool = new DocumentTool({ outputDir });
+    for (const format of ["docx", "pptx", "pdf"]) {
+      const result = await tool.call(JSON.stringify({ title: "Release check", content: "A useful document.\n\nAnother section.", format, filename: `fixture.${format}` }));
+      assert.equal(result.error, undefined, result.output);
+      const bytes = await fs.readFile(path.join(outputDir, `fixture.${format}`));
+      assert.ok(bytes.length > 100);
+      assert.equal(bytes.subarray(0, format === "pdf" ? 4 : 2).toString(), format === "pdf" ? "%PDF" : "PK");
+      if (format !== "pdf") {
+        const zip = await require("jszip").loadAsync(bytes);
+        assert.ok(zip.file(format === "docx" ? "word/document.xml" : "ppt/presentation.xml"));
+      }
+    }
+  } finally { await fs.rm(outputDir, { recursive: true, force: true }); }
+});
+
 test("EditorTool blocks sibling directory traversal outside the workspace root", async () => {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), "fireworks-plus-plus-editor-"));
   const workspacePath = path.join(root, "workspace");
@@ -1710,7 +1728,7 @@ test("MCPServer and MCPClient support tools, resources, and prompts", async () =
   const remoteTools = await client.asTools();
   const remoteToolResult = await remoteTools[0].run("hello");
 
-  assert.equal(init.serverInfo.name, "fireworks-plus-plus-mcp");
+  assert.equal(init.serverInfo.name, "pilo-mcp");
   assert.equal(tools[0].name, "echo");
   assert.equal(callResult.content[0].text, "echo:hi");
   assert.equal(resources[0].uri, "file:///demo.txt");
@@ -1726,7 +1744,7 @@ test("package exports the MCP subpath", async () => {
     [
       "--input-type=module",
       "-e",
-      "const mod = await import('fireworks-plus-plus/mcp'); console.log(Boolean(mod.MCPClient) && Boolean(mod.MCPServer));"
+      "const mod = await import('pilo-runtime/mcp'); console.log(Boolean(mod.MCPClient) && Boolean(mod.MCPServer));"
     ],
     {
       cwd: process.cwd(),

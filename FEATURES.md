@@ -27,6 +27,15 @@ Creating a huddle starts no model request. Sending a question may incur provider
 - Browser profiles, local terminal tools, document artifacts, HTML previews, and source-linked research.
 - Compact operating instructions, separate voice files, and playbooks loaded when relevant.
 
+## Agent Gateway & Ollama Support
+
+- **AI-native Agent Gateway** (`fireworks-plus-plus/gateway` / `src/gateway/`): Standalone HTTP and programmatic gateway (`AgentGateway`, `AgentGatewayServer`) with declarative config (`createGatewayFromConfig`) resolving secrets from environment variables.
+- **MCP federation & multiplexing**: Aggregates tools, resources, and prompts across in-memory and remote HTTP MCP backends (`HttpMCPTransport`) with optional namespacing and RBAC-filtered discovery.
+- **A2A (Agent-to-Agent) discovery & routing**: Exposes gateway and per-agent cards (`/.well-known/agent.json`, `/a2a/agents`), routes tasks across local or remote agents (`/a2a/tasks`, `/a2a/rpc`), and tracks task lifecycle state.
+- **Unified LLM routing & failover**: OpenAI-compatible `/v1/models`, `/v1/chat/completions`, and `/v1/completions` endpoints with model aliases, automatic failover chains (including cloud-to-local Ollama fallback), and token accounting.
+- **Zero-trust security & observability**: Constant-time API key and HS256 JWT authentication (`CompositeAuthenticator`), RBAC, policy rules, pattern guardrails, sliding-window rate limiting, token/call budgets, secret-redacted audit logs, `x-trace-id` propagation, and `/metrics`.
+- **Ollama LLMs & Ollama agents**: Native `ChatOllama` tool calling (`callWithTools`), JSON Schema structured outputs (`generateStructured`), `OllamaLLM` completions, token usage reporting, `/api/tags` model discovery, and one-step `registerOllamaLLM()` / `registerOllamaAgent()` helpers (with optional gateway-federated MCP tools).
+
 ## Operating boundaries
 
 Pilo is a local, single-operator tool. Model providers can charge for requests. Runtime approval and permission checks govern actions; notifications do not authorize actions or recurring paid work. Origin checks do not isolate local accounts or authenticate every local process. Named bots are independent AI assistants, with no affiliation or endorsement by the named people or firms. Financial analysis is informational and requires verification, not personalized financial advice.

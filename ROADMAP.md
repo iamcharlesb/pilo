@@ -1,10 +1,6 @@
-# Fireworks++ Roadmap
+# Pilo Node.js Runtime Roadmap
 
-Self-ownership is the right reason to bet on Fireworks++ — but only if we close the
-gaps that OpenAI Agents SDK already covers for free (maturity, multi-agent, product
-adapters). This backlog is verified against the current `src/` tree as of 2026-08-01,
-not just asserted — each item below is marked with what actually exists today so we
-don't re-build things that are already there.
+Pure Node.js / TypeScript agent runtime, Agent Gateway, and specialist bot framework (retired legacy `fireworks-plus-plus` branding, Python package, and `@openai/agents` SDK dependency). This backlog tracks what exists in `src/` and `node/browser_agent/src/`.
 
 ## Phase 0 — Make it a real package (blocks everything else)
 
@@ -51,14 +47,30 @@ don't re-build things that are already there.
       attach to over the wire; (2) there's no `onHandoff` or `onApproval` event, because
       neither handoffs nor approval gates exist yet (see above and Phase 4).
 - [ ] **Structured outputs parity across providers.**
-      **Mostly already done** — `src/chat_models/anthropic.ts`, `openai.ts`, and
-      `gemini.ts` all implement real structured-output paths (Anthropic via forced tool
-      call, OpenAI via `response_format: json_schema`, Gemini via its schema field). The
-      OpenAI + Anthropic minimum this item asks for is already met. The actual remaining
-      gap is `ollama.ts` (the one local provider called out in the non-goals) and
-      `perplexity.ts`, which have no structured-output support — and no compatibility test
-      pinning any of this down (folds into the Phase 4 compatibility-tests item, don't
-      duplicate the work).
+      **Mostly done** — `src/chat_models/anthropic.ts`, `openai.ts`, `gemini.ts`, and
+      `ollama.ts` all implement real structured-output paths (Anthropic via forced tool
+      call, OpenAI via `response_format: json_schema`, Gemini via its schema field,
+      Ollama via JSON Schema `format` along with native `callWithTools` support). The
+      remaining gap is `perplexity.ts` plus cross-provider compatibility tests in CI.
+- [x] **Native Agent Gateway & Ollama agent/LLM support (`src/gateway/`, `fireworks-plus-plus/gateway`).**
+      Implemented in-repo without external gateway binaries:
+      - **MCP federation & multiplexing** (`POST /mcp`, `HttpMCPTransport`) with
+        backend namespacing and RBAC-filtered tool/resource/prompt discovery.
+      - **A2A (Agent-to-Agent) discovery & task routing** (`/.well-known/agent.json`,
+        `/a2a/agents`, `/a2a/tasks`, `/a2a/rpc`) for local and remote agents.
+      - **Unified LLM routing** (`/v1/models`, `/v1/chat/completions`, `/v1/completions`)
+        with model aliases, automatic failover chains (e.g., cloud → local Ollama), and
+        token usage accounting.
+      - **Zero-trust security & observability**: `ApiKeyAuthenticator`,
+        `CompositeAuthenticator` (JWT + API keys), `RBACAuthorizer`, `PolicyEngine`,
+        pattern guardrails, `SlidingWindowRateLimiter`, token/call budgets, redacted
+        audit logging, trace IDs, and live `/metrics`.
+      - **First-class Ollama support**: `ChatOllama` native tool calling & structured
+        outputs, `OllamaLLM` usage/discovery, `gateway.registerOllamaLLM()`,
+        `gateway.registerOllamaAgent()` (with optional gateway MCP tool mounting), and
+        declarative `createGatewayFromConfig()`.
+      - *Remaining gateway follow-ups*: OpenTelemetry metrics/trace exporter and
+        streaming SSE pass-through on `/v1/chat/completions`.
 - [ ] **Eval harness** — golden datasets per product agent (builder, SDR, retention)
       runnable in CI.
       **Partially exists** — `src/evaluations/{base,runner,string_evaluators}.ts` already

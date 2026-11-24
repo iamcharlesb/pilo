@@ -5,13 +5,13 @@ Migrated on 2026-10-22 from `magicvisor/browser-agent` on Bitbucket to
 
 ## Visibility and access
 
-The GitHub browser-agent repository is **private**, preserving the source
-repository's visibility. The parent `iamcharlesb/pilo` repository is public.
-Developers need GitHub access to **both** repositories for a recursive clone.
-Anonymous clones of the parent cannot fetch this private submodule.
+The migration originally preserved browser-agent's private visibility. On
+2026-11-22, the owner made `iamcharlesb/browser-agent` public. Both it and the
+parent `iamcharlesb/pilo` repository can now be cloned without private access.
+Use a recursive clone so the application code is included.
 
-Making browser-agent public is a separate visibility decision. No private source
-or history was made public during this move. Browser-agent is the custom
+No private source or history was made public during the original move.
+Browser-agent is the custom
 TypeScript/Playwright/Electron app in this project, separate from
 `browser-use/browser-use`.
 
@@ -44,13 +44,13 @@ not re-tested as part of the hosting migration.
 
 ## Setup
 
-With GitHub credentials and access to the private submodule:
+With Git and Node.js installed (both repositories are public):
 
 ```sh
 git clone --recurse-submodules https://github.com/iamcharlesb/pilo.git
 cd pilo
 npm ci
-npm --prefix node/browser_agent ci
+npm --prefix node/browser_agent ci --legacy-peer-deps
 cd node/browser_agent
 npx playwright install chromium
 cd ../..

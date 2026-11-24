@@ -15,7 +15,7 @@ Named bots are AI assistants informed by public material. They are not the named
 ## Before you start
 
 - Install Git and Node.js 22.12 or newer, with npm.
-- You need access to [iamcharlesb/browser-agent](https://github.com/iamcharlesb/browser-agent), the separate **private** repository containing the application. This public repository alone is not a complete app download.
+- The application lives in the separate **public** [iamcharlesb/browser-agent](https://github.com/iamcharlesb/browser-agent) submodule. Clone recursively to include it; no private-repository access is required.
 - Have your chosen model provider credentials and model ID ready, or configure a local model. Google sign-in and MongoDB are optional.
 
 ## Install and launch
@@ -26,7 +26,7 @@ Clone with submodules so the application code is included:
 git clone --recurse-submodules https://github.com/iamcharlesb/pilo.git
 cd pilo
 npm ci
-npm --prefix node/browser_agent ci
+npm --prefix node/browser_agent ci --legacy-peer-deps
 cd node/browser_agent
 npx playwright install chromium
 cd ../..
@@ -35,7 +35,7 @@ npm run desktop
 
 The last command builds and opens Pilo in a desktop window. Keep the terminal running while you use it. The desktop server uses port 8766 by default.
 
-If cloning reports **Repository not found** for `browser-agent`, sign in to GitHub with an account that has access to that repository. Downloading this repository as a ZIP does not include the submodule.
+Both repositories are public. Downloading this repository as a ZIP does not include the application submodule; use the recursive clone above. The runtime currently needs `--legacy-peer-deps` for its OpenAI SDK/Zod peer dependency conflict.
 
 ## Connect a model
 
@@ -80,7 +80,7 @@ git pull
 git submodule sync --recursive
 git submodule update --init --recursive
 npm ci
-npm --prefix node/browser_agent ci
+npm --prefix node/browser_agent ci --legacy-peer-deps
 npm run desktop
 ```
 
@@ -90,7 +90,7 @@ Commit or save your local edits before updating. If a Pilo server is already run
 
 | Problem | What to check |
 | --- | --- |
-| Application folder is empty | Run `git submodule update --init --recursive`; confirm access to the private app repository. |
+| Application folder is empty | Run `git submodule update --init --recursive` to fetch the public app submodule. |
 | Electron or TypeScript is missing | Run `npm --prefix node/browser_agent ci`. |
 | Browser executable is missing | Run `npx playwright install chromium` from `node/browser_agent`. |
 | Model does not respond | Check the selected provider, model ID, credentials, provider balance, and limits in Settings. |
@@ -99,7 +99,7 @@ Commit or save your local edits before updating. If a Pilo server is already run
 
 ## More help and contributing
 
-- [Codex Wake](tools/codex-wake/README.md): a standalone MIT-licensed MCP event observer and timeout runner for Codex, independent of the private application submodule.
+- [Codex Wake](tools/codex-wake/README.md): a standalone MIT-licensed MCP event observer and timeout runner for Codex, independent of the application submodule.
 - [Application documentation](node/browser_agent/README.md): provider configuration, browser connection, approvals, and advanced setup.
 - [CLI setup](node/browser_agent/docs/cli.md): terminal use without the desktop window.
 - [Operating boundaries](node/browser_agent/docs/buddy-bot-production.md): current limitations and deployment details.

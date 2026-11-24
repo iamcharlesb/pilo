@@ -65,7 +65,7 @@ export class MCPServer {
 
   constructor(config: MCPServerConfig = {}) {
     this.serverInfo = config.serverInfo ?? {
-      name: "fireworks-plus-plus-mcp",
+      name: "pilo-mcp",
       version: "0.1.0"
     };
     this.protocolVersion = config.protocolVersion ?? MCP_PROTOCOL_VERSION;

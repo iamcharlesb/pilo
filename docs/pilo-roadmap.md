@@ -15,6 +15,8 @@ This roadmap describes planned product work, not shipped capabilities or committ
 
 ## Next priorities
 
+- [ ] Integrate on-demand compute for explicitly requested workloads, with environment-configured providers, pricing and limits, job status, cancellation and cleanup.
+- [ ] Integrate Higgsfield for user-requested media generation, with environment-configured credentials and limits, job status and output retrieval.
 - [ ] Broaden catalog coverage tests for filtering, onboarding, renamed profiles and keyboard navigation.
 - [ ] Expand narrow-pane and accessibility validation across supported desktop sizes.
 - [ ] Evaluate stable bot identity mapping across renames and synchronized rosters.
