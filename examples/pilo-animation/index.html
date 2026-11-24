@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pilo · A little more alive</title>
+<style>
+:root{font-family:Inter,ui-rounded,"SF Pro Rounded",system-ui,sans-serif;color:#19243a;background:#fbfcff;font-synthesis:none}*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 42%,#fff 25%,#f3f7ff 100%)}main{width:min(1100px,100%);padding:30px 24px 26px;text-align:center}header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 16px}.eyebrow{font-size:11px;letter-spacing:.22em;font-weight:750;color:#728097;text-transform:uppercase}.live{display:flex;align-items:center;gap:7px;font-size:12px;color:#67768c}.live i{width:6px;height:6px;border-radius:50%;background:#1ca97c;box-shadow:0 0 0 4px #1ca97c0f}.scene{width:100%;max-height:74svh;display:block;overflow:visible;margin:8px auto 0}.character{cursor:pointer;outline:none;transform-box:fill-box;transform-origin:50% 100%;filter:url(#shadow)}.character:focus-visible{filter:url(#focus)}.motion{transform-box:fill-box;transform-origin:50% 90%;animation-duration:calc(var(--duration,4s) / var(--speed,1));animation-iteration-count:infinite;animation-timing-function:ease-in-out}.hero-motion{animation-name:breathe;--duration:4.5s}.frog-motion{animation-name:hop;--duration:5.7s}.blob-motion{animation-name:squish;--duration:4.3s}.heart-motion{animation-name:heartbeat;--duration:3.2s;transform-origin:50% 65%}.yellow-motion{animation-name:sway;--duration:5s}.bot-motion{animation-name:float;--duration:3s;transform-origin:center}.arm{transform-box:fill-box;transform-origin:20% 80%;animation:wave calc(3.8s / var(--speed,1)) ease-in-out infinite}.eye{transform-box:fill-box;transform-origin:center;animation:blink calc(5.4s / var(--speed,1)) infinite}.frog .eye{animation-delay:1.2s}.blob .eye{animation-delay:2.4s}.gaze{transition:translate .18s ease-out}.rays{animation:twinkle calc(3s / var(--speed,1)) ease-in-out infinite;transform-box:fill-box;transform-origin:bottom left}.logo-dot{animation:dot calc(4.5s / var(--speed,1)) ease-in-out infinite;transform-box:fill-box;transform-origin:center}.celebrating .character{animation:party .8s cubic-bezier(.2,.7,.3,1) var(--delay,0s) 2}.paused *{animation-play-state:paused!important}.reduced *{animation:none!important;transition:none!important}.caption{font-size:14px;color:#7a879b;margin:0 0 22px}.controls{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}button,.speed-control{border:1px solid #e2e8f1;border-radius:100px;background:#fff;padding:11px 18px;font:600 12px inherit;color:#33445e;box-shadow:0 3px 10px #25375504}button{cursor:pointer;font-family:inherit;font-size:12px;transition:transform .2s,box-shadow .2s}button:hover{transform:translateY(-2px);box-shadow:0 5px 15px #25375510}button:focus-visible,input:focus-visible{outline:3px solid #83caff;outline-offset:4px}.primary{background:#1687ff;color:white;border-color:#1687ff}.speed-control{display:flex;align-items:center;gap:10px;font-size:12px;padding:10px 15px}input{width:75px;accent-color:#1687ff}output{min-width:30px;font-variant-numeric:tabular-nums}.hint{margin:20px 0 0;font-size:11px;color:#9aa5b5}.spark{position:absolute;pointer-events:none;width:8px;height:8px;border-radius:3px;animation:confetti 1.3s ease-out forwards;z-index:2}body{overflow-x:hidden}@keyframes breathe{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-7px) scale(1.012,1.018)}}@keyframes hop{0%,64%,100%{transform:translateY(0) scale(1)}70%{transform:scale(1.08,.9)}79%{transform:translateY(-35px) rotate(-5deg) scale(.97,1.04)}89%{transform:scale(1.07,.92)}}@keyframes squish{0%,100%{transform:rotate(-3deg) scale(1)}45%{transform:rotate(4deg) scale(1.04,.94)}70%{transform:translateY(-8px) rotate(-3deg)}}@keyframes heartbeat{0%,40%,100%{transform:scale(1) rotate(3deg)}12%,26%{transform:scale(1.055) rotate(-2deg)}19%,34%{transform:scale(1.015)}}@keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(5deg) translateY(-5px)}}@keyframes float{0%,100%{transform:translateY(0) rotate(10deg)}50%{transform:translateY(-20px) rotate(-8deg)}}@keyframes wave{0%,35%,75%,100%{transform:rotate(0)}44%,62%{transform:rotate(-19deg)}53%{transform:rotate(6deg)}}@keyframes blink{0%,42%,46%,100%{transform:scaleY(1)}44%{transform:scaleY(.08)}}@keyframes twinkle{0%,100%{opacity:.5;transform:scale(.85)}50%{opacity:1;transform:scale(1.08)}}@keyframes dot{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}@keyframes party{0%,100%{transform:translateY(0) rotate(0)}35%{transform:translateY(-45px) rotate(-9deg)}70%{transform:translateY(-15px) rotate(7deg)}}@keyframes confetti{to{transform:translate(var(--x),var(--y)) rotate(540deg);opacity:0}}@media(max-width:600px){main{padding:24px 8px}.scene{margin:36px auto 20px;max-height:none}.caption{font-size:12px}.hint{font-size:10px}.eyebrow{font-size:9px}.live{font-size:10px}.controls{gap:8px}button{padding:11px 14px}.speed-control{padding:9px 12px}}@media(prefers-reduced-motion:reduce){.motion,.arm,.eye,.rays,.logo-dot{animation:none}.gaze{transition:none}}
+
+.expression-controls{margin-bottom:14px;gap:7px}.expression-controls button[aria-pressed="true"]{background:#e9f3ff;border-color:#95caff;color:#0874dd}.expression-face,.writing-prop{display:none;pointer-events:none}.scene[data-expression]:not([data-expression="idle"]) .base-face,.scene[data-expression]:not([data-expression="idle"]) .eye{visibility:hidden}.scene[data-expression]:not([data-expression="idle"]) .expression-face{display:inline}.expression{display:none}
+.scene[data-expression="happy"] .expression-happy,.scene[data-expression="thinking"] .expression-thinking,.scene[data-expression="writing"] .expression-writing,.scene[data-expression="sad"] .expression-sad,.scene[data-expression="writing"] .writing-prop{display:inline}
+.scene[data-expression="happy"] .motion{animation-name:happy-bounce;--duration:1.8s}.scene[data-expression="thinking"] .motion{animation-name:ponder;--duration:4s}.scene[data-expression="writing"] .motion{animation-name:writing-nod;--duration:1.6s}.scene[data-expression="sad"] .motion{animation-name:sad-sigh;--duration:5s}
+.scene[data-expression="thinking"] .arm{animation-name:ponder-arm}.scene[data-expression="writing"] .arm{animation-name:writing-arm;animation-duration:calc(.6s / var(--speed,1))}.scene[data-expression="sad"] .arm{animation:none;transform:rotate(24deg)}
+.thought-dot{animation:thinking-dot calc(1.5s / var(--speed,1)) ease-in-out infinite}.thought-dot:nth-child(2){animation-delay:.2s}.thought-dot:nth-child(3){animation-delay:.4s}.pencil{transform-box:fill-box;transform-origin:20% 90%;animation:scribble calc(.45s / var(--speed,1)) ease-in-out infinite}.tear{animation:teardrop calc(3s / var(--speed,1)) ease-in infinite}
+@keyframes happy-bounce{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-16px) rotate(3deg)}}@keyframes ponder{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg) translateY(-3px)}}@keyframes writing-nod{0%,100%{transform:rotate(1deg)}50%{transform:translateY(3px) rotate(-1deg)}}@keyframes sad-sigh{0%,100%{transform:translateY(5px) scale(1,.98)}50%{transform:translateY(10px) scale(1.015,.96)}}@keyframes ponder-arm{0%,100%{transform:rotate(-35deg)}50%{transform:rotate(-43deg)}}@keyframes writing-arm{0%,100%{transform:rotate(15deg)}50%{transform:rotate(22deg)}}@keyframes thinking-dot{0%,65%,100%{opacity:.25}30%{opacity:1}}@keyframes scribble{0%,100%{transform:translate(0,0) rotate(-7deg)}50%{transform:translate(7px,2px) rotate(7deg)}}@keyframes teardrop{0%,15%{opacity:0;transform:translateY(0)}30%{opacity:1}90%,100%{opacity:0;transform:translateY(28px)}}
+@media(prefers-reduced-motion:reduce){.thought-dot,.pencil,.tear{animation:none}.tear{opacity:.8}}
+
+.star-twirl{animation-name:star-twirl;--duration:4.5s;transform-origin:center}.cloud-drift{animation-name:cloud-drift;--duration:6s;transform-origin:center}.cat-tilt{animation-name:cat-tilt;--duration:3.8s;transform-origin:center}
+@keyframes star-twirl{0%,100%{transform:translateY(0) rotate(-9deg) scale(1)}50%{transform:translateY(-12px) rotate(10deg) scale(1.05)}}@keyframes cloud-drift{0%,100%{transform:translate(-10px,0)}50%{transform:translate(10px,-9px)}}@keyframes cat-tilt{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg) translateY(-7px)}}
+
+.nova-motion{animation-name:nova-bob;--duration:4s;transform-origin:center}.sage-motion{animation-name:sage-sway;--duration:4.6s;transform-origin:center}.byte-motion{animation-name:byte-tap;--duration:2s;transform-origin:50% 90%}.orbit-spark{transform-box:fill-box;transform-origin:center;animation:orbit-spark calc(5s / var(--speed,1)) ease-in-out infinite}.code-cursor{animation:cursor-blink calc(1s / var(--speed,1)) steps(2,jump-none) infinite}.code-line{stroke-dasharray:40;animation:code-type calc(3.5s / var(--speed,1)) ease-in-out infinite}.code-line:nth-child(2){animation-delay:.4s}.code-line:nth-child(3){animation-delay:.8s}
+@keyframes nova-bob{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(3deg) translateY(-9px)}}@keyframes sage-sway{0%,100%{transform:rotate(3deg)}50%{transform:rotate(-3deg) translateY(-9px)}}@keyframes byte-tap{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-4px) rotate(1deg)}}@keyframes orbit-spark{0%,100%{transform:rotate(-12deg) scale(.85)}50%{transform:rotate(25deg) scale(1.15)}}@keyframes cursor-blink{0%{opacity:1}100%{opacity:0}}@keyframes code-type{0%,12%{stroke-dashoffset:40;opacity:.35}55%,90%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:40;opacity:.35}}
+@media(prefers-reduced-motion:reduce){.orbit-spark,.code-cursor,.code-line{animation:none}}
+</style>
+</head>
+<body>
+<main>
+<header><span class="eyebrow">A little more alive</span><span class="live"><i></i>Meet the Pilo crew</span></header>
+<svg data-expression="idle" class="scene" viewBox="0 0 1100 1080" role="group" aria-label="Fifteen animated Pilo friends: a blue mascot, green frog, blue blob, yellow friend, pink heart, purple bot, golden star, fluffy cloud, orange cat, dark AI bot, teal AI bot coding terminal, marketer, blogger and designer">
+<defs>
+<radialGradient id="blue" cx="35%" cy="20%" r="85%"><stop stop-color="#48d3ff"/><stop offset=".48" stop-color="#09aaff"/><stop offset="1" stop-color="#0078e4"/></radialGradient>
+<radialGradient id="skin" cx="45%" cy="30%" r="80%"><stop stop-color="#fffdf7"/><stop offset=".75" stop-color="#fff0e3"/><stop offset="1" stop-color="#e8d1c3"/></radialGradient>
+<radialGradient id="green" cx="40%" cy="18%" r="90%"><stop stop-color="#c7ff67"/><stop offset=".5" stop-color="#8be538"/><stop offset="1" stop-color="#50b31d"/></radialGradient>
+<radialGradient id="pink" cx="35%" cy="20%" r="90%"><stop stop-color="#ff80e9"/><stop offset=".5" stop-color="#ff35cc"/><stop offset="1" stop-color="#dc08a3"/></radialGradient>
+<radialGradient id="yellow" cx="35%" cy="15%" r="95%"><stop stop-color="#ffe96b"/><stop offset=".55" stop-color="#ffca25"/><stop offset="1" stop-color="#f4a50b"/></radialGradient>
+<radialGradient id="purple" cx="30%" cy="15%" r="90%"><stop stop-color="#e7afff"/><stop offset=".5" stop-color="#bd64f5"/><stop offset="1" stop-color="#9428d2"/></radialGradient>
+<linearGradient id="ink" x2=".8" y2="1"><stop stop-color="#223249"/><stop offset="1" stop-color="#10172e"/></linearGradient>
+<linearGradient id="iris" x2="0" y2="1"><stop stop-color="#0c1527"/><stop offset=".55" stop-color="#061a31"/><stop offset="1" stop-color="#007eff"/></linearGradient>
+<radialGradient id="blush"><stop stop-color="#ff8c91" stop-opacity=".65"/><stop offset="1" stop-color="#ff8c91" stop-opacity="0"/></radialGradient>
+<filter id="shadow" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#244475" flood-opacity=".13"/></filter>
+<filter id="focus" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow stdDeviation="6" flood-color="#008aff" flood-opacity=".7"/></filter>
+<filter id="fuzz" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="3" seed="9" result="noise"/><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in"/><feBlend in="SourceGraphic" mode="soft-light"/></filter>
+<radialGradient id="orange" cx="35%" cy="20%" r="90%"><stop stop-color="#ffdf9a"/><stop offset=".6" stop-color="#ffb455"/><stop offset="1" stop-color="#ed8b30"/></radialGradient>
+<linearGradient id="cloud-white" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#dfedff"/></linearGradient>
+<radialGradient id="graphite" cx="30%" cy="15%" r="90%"><stop stop-color="#657080"/><stop offset=".5" stop-color="#2a303c"/><stop offset="1" stop-color="#10151e"/></radialGradient>
+<radialGradient id="teal" cx="30%" cy="15%" r="90%"><stop stop-color="#8ff6d5"/><stop offset=".55" stop-color="#22c5a1"/><stop offset="1" stop-color="#0a8e7b"/></radialGradient>
+<linearGradient id="terminal" x2="0" y2="1"><stop stop-color="#233d4a"/><stop offset="1" stop-color="#112330"/></linearGradient>
+<filter id="ground"><feGaussianBlur stdDeviation="10"/></filter>
+</defs>
+<ellipse cx="550" cy="601" rx="397" ry="19" fill="#23416c" opacity=".12" filter="url(#ground)"/>
+<!-- Each character is a separate, keyboard-accessible animated group. -->
+<g class="character frog" role="button" tabindex="0" aria-label="Make the green frog hop" data-name="frog" style="--delay:.08s"><title>Fern · the curious one</title><g class="motion frog-motion">
+<path d="M159 574C134 542 148 494 174 469C169 399 196 363 239 385C277 354 316 386 315 431C343 471 354 532 327 570C290 603 185 601 159 574Z" fill="url(#green)"/>
+<path d="M159 574C134 542 148 494 174 469C169 399 196 363 239 385C277 354 316 386 315 431C343 471 354 532 327 570C290 603 185 601 159 574Z" fill="#a4ed4b" opacity=".15" filter="url(#fuzz)"/>
+<g class="eye"><ellipse cx="217" cy="418" rx="26" ry="30" fill="#fbfff3"/><ellipse class="gaze" cx="223" cy="417" rx="17" ry="20" fill="url(#ink)"/><circle cx="228" cy="409" r="5" fill="white" opacity=".8"/></g>
+<g class="eye"><ellipse cx="285" cy="411" rx="25" ry="29" fill="#fbfff3"/><ellipse class="gaze" cx="289" cy="410" rx="17" ry="20" fill="url(#ink)"/><circle cx="294" cy="402" r="5" fill="white" opacity=".8"/></g><ellipse class="base-face" cx="240" cy="474" rx="12" ry="14" fill="#172834"/>
+
+<g class="expression-face" transform="translate(251 421) scale(0.69)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ 
+</g>
+<g class="writing-prop" transform="translate(281 489) scale(0.55)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g>
+</g></g>
+<g class="character heart" role="button" tabindex="0" aria-label="Make the pink heart dance" data-name="heart" style="--delay:.18s"><title>Love · the big-hearted one</title><g class="motion heart-motion">
+<path d="M858 601C815 576 766 532 763 483C758 423 814 376 866 415C919 373 978 414 973 478C970 532 922 587 881 605Q869 611 858 601Z" fill="url(#pink)"/>
+<path d="M858 601C815 576 766 532 763 483C758 423 814 376 866 415C919 373 978 414 973 478C970 532 922 587 881 605Q869 611 858 601Z" fill="#ff6fdc" opacity=".13" filter="url(#fuzz)"/>
+<g class="base-face" transform="rotate(8 865 475)" fill="url(#ink)" stroke="#181d29" stroke-width="6"><path d="M793 469H947M849 469Q866 456 881 469" fill="none" stroke-linecap="round"/><ellipse cx="825" cy="469" rx="26" ry="29"/><ellipse cx="914" cy="469" rx="26" ry="29"/></g>
+
+<g class="expression-face" transform="translate(869 476) scale(0.9)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ <g stroke-width="3" opacity=".85"><circle cx="-46" cy="0" r="28"/><circle cx="46" cy="0" r="28"/><path d="M-18 0H18M-85-2H-74M74-2H85"/></g>
+</g>
+<g class="writing-prop" transform="translate(900 553) scale(0.6)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g>
+</g></g>
+<g class="character yellow" role="button" tabindex="0" aria-label="Make the yellow friend sway" data-name="yellow" style="--delay:.24s"><title>Sunny · the thoughtful one</title><g class="motion yellow-motion">
+<path d="M673 603C662 573 680 527 698 503C714 467 751 464 779 480C810 497 825 530 831 553C862 588 852 613 829 618C786 626 708 623 673 618Z" fill="url(#yellow)"/>
+<path d="M673 603C662 573 680 527 698 503C714 467 751 464 779 480C810 497 825 530 831 553C862 588 852 613 829 618C786 626 708 623 673 618Z" fill="#ffdc41" opacity=".13" filter="url(#fuzz)"/>
+<g class="base-face" stroke="#202938" stroke-width="6" fill="none"><path d="M677 550L714 547M771 550H788"/><ellipse cx="742" cy="551" rx="29" ry="34"/><ellipse cx="813" cy="554" rx="26" ry="32"/><path d="M730 553Q741 575 753 554M803 557Q813 575 824 558" stroke-linecap="round"/></g>
+
+<g class="expression-face" transform="translate(778 552) scale(0.7)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ <g stroke-width="3" opacity=".85"><circle cx="-46" cy="0" r="28"/><circle cx="46" cy="0" r="28"/><path d="M-18 0H18M-85-2H-74M74-2H85"/></g>
+</g>
+<g class="writing-prop" transform="translate(815 593) scale(0.48)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g>
+</g></g>
+<g class="character blob" role="button" tabindex="0" aria-label="Make the blue blob wiggle" data-name="blob" style="--delay:.12s"><title>Bo · the easygoing one</title><g class="motion blob-motion">
+<path d="M196 617C170 614 171 580 187 558C202 533 221 520 244 513C269 493 306 503 325 528C345 545 357 568 359 590C370 619 341 625 314 625Z" fill="url(#blue)"/>
+<path d="M196 617C170 614 171 580 187 558C202 533 221 520 244 513C269 493 306 503 325 528C345 545 357 568 359 590C370 619 341 625 314 625Z" fill="#19acff" opacity=".15" filter="url(#fuzz)"/>
+<path d="M187 551C174 534 198 506 228 491C254 475 283 466 309 476C322 481 331 494 331 506C280 509 239 530 200 551Q191 555 187 551Z" fill="url(#ink)"/><ellipse class="eye" cx="273" cy="565" rx="9" ry="15" fill="#0b243d"/><ellipse class="eye" cx="314" cy="561" rx="8" ry="14" fill="#0b243d"/>
+
+<g class="expression-face" transform="translate(293 564) scale(0.45)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ 
+</g>
+<g class="writing-prop" transform="translate(328 602) scale(0.4)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g>
+</g></g>
+<g class="character hero" role="button" tabindex="0" aria-label="Make Pilo wave" data-name="pilo"><title>Pilo · your little blue companion</title><g class="motion hero-motion">
+<path d="M421 574C403 594 404 619 424 622H482C505 619 505 595 495 577M564 577C552 600 558 622 578 623H632C656 619 651 594 637 574" fill="url(#blue)"/>
+<path d="M422 379C391 409 389 500 411 551C433 597 595 600 642 561C679 524 664 438 635 389Z" fill="url(#blue)"/>
+<path d="M422 379C391 409 389 500 411 551C433 597 595 600 642 561C679 524 664 438 635 389Z" fill="#29b8ff" opacity=".17" filter="url(#fuzz)"/>
+<path d="M418 407C395 399 366 423 350 450C330 482 339 510 360 517C387 524 411 495 420 467C429 443 435 418 418 407Z" fill="url(#blue)"/>
+<g class="arm"><path d="M635 391C651 368 678 357 697 368C719 379 727 403 714 425C699 453 667 472 647 456C631 443 623 413 635 391Z" fill="url(#blue)"/></g>
+<path d="M320 303C310 195 403 100 524 91C646 81 731 155 735 257C741 350 682 408 561 418C437 429 330 407 320 303Z" fill="url(#blue)"/>
+<path d="M320 303C310 195 403 100 524 91C646 81 731 155 735 257C741 350 682 408 561 418C437 429 330 407 320 303Z" fill="#35bbff" opacity=".19" filter="url(#fuzz)"/>
+<path d="M385 285C397 221 462 188 553 177C646 164 697 200 700 264C708 338 664 370 573 379C470 392 365 384 385 285Z" fill="url(#skin)" stroke="#087ac9" stroke-opacity=".4" stroke-width="3"/>
+<ellipse cx="439" cy="336" rx="34" ry="29" fill="url(#blush)"/><ellipse cx="654" cy="309" rx="33" ry="29" fill="url(#blush)"/>
+<g class="eye"><ellipse cx="466" cy="291" rx="29" ry="34" fill="url(#iris)"/><ellipse class="gaze" cx="466" cy="286" rx="20" ry="25" fill="#071529"/><circle cx="473" cy="274" r="8" fill="white"/></g>
+<g class="eye"><ellipse cx="629" cy="267" rx="28" ry="33" fill="url(#iris)"/><ellipse class="gaze" cx="629" cy="261" rx="20" ry="25" fill="#071529"/><circle cx="636" cy="250" r="8" fill="white"/></g>
+<path class="base-face" d="M527 306C539 324 564 321 576 300" fill="none" stroke="#0d2237" stroke-width="10" stroke-linecap="round"/>
+
+<g class="expression-face" transform="translate(548 284) scale(1.65)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ 
+</g>
+<g class="writing-prop" transform="translate(578 474) scale(1.15)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g>
+</g></g>
+<g class="character bot" role="button" tabindex="0" aria-label="Make the purple bot bounce" data-name="bot" style="--delay:.3s"><title>Pip · a spark of possibility</title><g class="motion bot-motion">
+<rect x="761" y="253" width="103" height="104" rx="29" fill="url(#purple)"/><rect x="761" y="253" width="103" height="104" rx="29" fill="#d58aff" opacity=".12" filter="url(#fuzz)"/>
+<rect class="base-face" x="791" y="288" width="11" height="25" rx="5.5" fill="#fff5ff"/><rect class="base-face" x="817" y="288" width="11" height="25" rx="5.5" fill="#fff5ff"/>
+<g class="rays" stroke="#087bff" stroke-width="11" stroke-linecap="round"><path d="M842 231L845 206M866 240L886 222"/></g>
+
+<g class="expression-face" transform="translate(812 301) scale(0.36)" stroke="#fff5ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#fff5ff"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#fff5ff"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#fff5ff"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ 
+</g>
+<g class="writing-prop" transform="translate(843 346) scale(0.4)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g>
+</g></g>
+<!-- Three additional emoji characters, each with its own animation and interaction. -->
+<g transform="translate(158 267)"><g class="character star" role="button" tabindex="0" aria-label="Say hello to Stella the star" data-name="star"><title>Stella · the shining star</title><g class="motion star-twirl"><path d="M0-66L20-24L65-17L32 16L39 62L0 41L-39 62L-32 16L-65-17L-20-24Z" fill="url(#yellow)" stroke="#ffda56" stroke-width="9" stroke-linejoin="round"/><path d="M-36-12L-18-16L-2-48" fill="none" stroke="#fff4b4" stroke-width="5" stroke-linecap="round" opacity=".75"/><g class="base-face" fill="#182b43"><ellipse class="eye" cx="-22" cy="-3" rx="6" ry="9"/><ellipse class="eye" cx="22" cy="-3" rx="6" ry="9"/><path d="M-12 18Q0 32 12 18" fill="none" stroke="#182b43" stroke-width="4" stroke-linecap="round"/></g><g class="expression-face" transform="translate(0 0) scale(0.48)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ 
+</g><g class="writing-prop" transform="translate(20 40) scale(0.42)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g></g></g></g>
+<g transform="translate(259 155)"><g class="character cloud" role="button" tabindex="0" aria-label="Say hello to Nimbus the cloud" data-name="cloud"><title>Nimbus · the daydreaming cloud</title><g class="motion cloud-drift"><path d="M-47 31C-85 31-90-15-57-23C-60-64-3-71 12-38C37-55 65-34 61-14C94-9 84 33 58 33Z" fill="url(#cloud-white)" stroke="#d5e9ff" stroke-width="2"/><ellipse cx="-41" cy="13" rx="10" ry="5" fill="#ffc1d2"/><ellipse cx="41" cy="13" rx="10" ry="5" fill="#ffc1d2"/><g class="base-face" fill="#182b43"><ellipse class="eye" cx="-22" cy="-3" rx="6" ry="9"/><ellipse class="eye" cx="22" cy="-3" rx="6" ry="9"/><path d="M-12 18Q0 32 12 18" fill="none" stroke="#182b43" stroke-width="4" stroke-linecap="round"/></g><g class="expression-face" transform="translate(0 0) scale(0.48)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ 
+</g><g class="writing-prop" transform="translate(20 40) scale(0.42)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g></g></g></g>
+<g transform="translate(965 299)"><g class="character cat" role="button" tabindex="0" aria-label="Say hello to Mochi the cat" data-name="cat"><title>Mochi · the playful cat</title><g class="motion cat-tilt"><path d="M-53-18L-57-64L-22-43Q0-51 22-43L57-64L53-18C73 13 49 53 0 55C-49 53-73 13-53-18Z" fill="url(#orange)"/><path d="M-45-35L-47-49L-32-39M32-39L47-49L45-35" fill="#ffa7ab" stroke="#ffb2a5" stroke-width="3" stroke-linejoin="round"/><path d="M-9-44L-6-28M9-44L6-28" stroke="#d98132" stroke-width="5" stroke-linecap="round"/><g stroke="#d98132" stroke-width="2.5" stroke-linecap="round"><path d="M-40 13L-65 8M-40 22L-64 27M40 13L65 8M40 22L64 27"/></g><g class="base-face" fill="#182b43"><ellipse class="eye" cx="-22" cy="-3" rx="6" ry="9"/><ellipse class="eye" cx="22" cy="-3" rx="6" ry="9"/><path d="M-12 18Q0 32 12 18" fill="none" stroke="#182b43" stroke-width="4" stroke-linecap="round"/></g><g class="expression-face" transform="translate(0 0) scale(0.48)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ 
+</g><g class="writing-prop" transform="translate(20 40) scale(0.42)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g></g></g></g>
+<!-- AI-inspired companions and a dedicated coding emoji. -->
+<g transform="translate(78 443)"><g class="character nova" role="button" tabindex="0" aria-label="Say hello to Nova, the Grok-inspired dark bot" data-name="nova"><title>Nova · the curious dark bot</title><g class="motion nova-motion"><ellipse cx="-25" cy="58" rx="15" ry="10" fill="#202936"/><ellipse cx="25" cy="58" rx="15" ry="10" fill="#202936"/>
+<path d="M-47-3Q-76-8-63 17L-46 28M47-3Q76-8 63 17L46 28" fill="url(#graphite)"/>
+<rect x="-49" y="-52" width="98" height="108" rx="37" fill="url(#graphite)"/>
+<path d="M-30-37L-18-40" stroke="#a3aebe" stroke-width="4" stroke-linecap="round"/>
+<rect x="-40" y="-27" width="80" height="65" rx="25" fill="#eaf2fb"/>
+<g class="orbit-spark" fill="#273543"><path d="M42-75L46-65L56-61L46-57L42-47L38-57L28-61L38-65Z"/></g><g class="base-face" fill="#172638"><ellipse class="eye" cx="-20" cy="-3" rx="6" ry="10"/><ellipse class="eye" cx="20" cy="-3" rx="6" ry="10"/><path d="M-10 17Q0 28 10 17" fill="none" stroke="#172638" stroke-width="4" stroke-linecap="round"/></g><g class="expression-face" transform="translate(0 -2) scale(0.43)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ 
+</g><g class="writing-prop" transform="translate(20 45) scale(0.42)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g></g></g></g>
+<g transform="translate(932 125)"><g class="character sage" role="button" tabindex="0" aria-label="Say hello to Sage, the ChatGPT-inspired teal bot" data-name="sage"><title>Sage · the helpful teal bot</title><g class="motion sage-motion"><ellipse cx="-25" cy="59" rx="14" ry="9" fill="#0a9c85"/><ellipse cx="25" cy="59" rx="14" ry="9" fill="#0a9c85"/>
+<path d="M-47 0Q-76-7-65 17L-46 28M47 0Q76-7 65 17L46 28" fill="url(#teal)"/>
+<path d="M-55-16Q-55-53-20-53H20Q55-53 55-16V20Q55 52 24 52H-12L-35 65L-31 48Q-55 43-55 20Z" fill="url(#teal)"/>
+<rect x="-43" y="-27" width="86" height="65" rx="24" fill="#effff9"/>
+<g class="teal-crest" stroke="#effff9" stroke-width="3" fill="none" opacity=".95"><path d="M-9-39Q-18-55-3-57Q12-59 9-45Q7-33-5-35Q-17-37-9-48Q-1-59 8-50"/></g><g class="base-face" fill="#172638"><ellipse class="eye" cx="-20" cy="-3" rx="6" ry="10"/><ellipse class="eye" cx="20" cy="-3" rx="6" ry="10"/><path d="M-10 17Q0 28 10 17" fill="none" stroke="#172638" stroke-width="4" stroke-linecap="round"/></g><g class="expression-face" transform="translate(0 -2) scale(0.43)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ 
+</g><g class="writing-prop" transform="translate(20 45) scale(0.42)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g></g></g></g>
+<g transform="translate(986 703)"><g class="character byte" role="button" tabindex="0" aria-label="Say hello to Byte, the coding terminal emoji" data-name="byte"><title>Byte · the coding companion</title><g class="motion byte-motion"><rect x="-76" y="-55" width="152" height="107" rx="20" fill="#405e70"/>
+<rect x="-68" y="-46" width="136" height="86" rx="12" fill="url(#terminal)"/>
+<g fill="#9ab1c1"><circle cx="-55" cy="-36" r="3"/><circle cx="-44" cy="-36" r="3"/><circle cx="-33" cy="-36" r="3"/></g>
+<path d="M-76 48H76L90 61Q92 67 82 68H-82Q-92 67-90 61Z" fill="#94afc2"/><path d="M-20 51H20L25 59H-25Z" fill="#5b788d"/>
+<g class="base-face" stroke="#9df8c9" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M-18-18L-32-7L-18 4M18-18L32-7L18 4M-10 14H10"/><path class="code-cursor" d="M16 14H22" stroke="#ffd978"/></g>
+<g class="code-lines" stroke-width="3" stroke-linecap="round"><path class="code-line" d="M-49 27H-13" stroke="#68dfb6"/><path class="code-line" d="M-5 27H17" stroke="#aa9cfb"/><path class="code-line" d="M25 27H45" stroke="#ffd978"/></g><g class="expression-face" transform="translate(0 -2) scale(0.43)" stroke="#9df8c9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#9df8c9"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#9df8c9"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#9df8c9"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ 
+</g><g class="writing-prop" transform="translate(20 45) scale(0.42)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g></g></g></g>
+<!-- Dedicated marketing, blogging, and design role characters. -->
+<g transform="translate(340 955)"><g class="character marketing" role="button" tabindex="0" aria-label="Say hello to Moxie, the marketing emoji" data-name="marketing"><title>Moxie · the marketing spark</title><g class="motion sage-motion"><path d="M-57 0Q-57-54 0-54Q57-54 57 0V27Q57 59 0 59Q-57 59-57 27Z" fill="url(#pink)"/><ellipse cx="-34" cy="66" rx="16" ry="9" fill="#df269e"/><ellipse cx="34" cy="66" rx="16" ry="9" fill="#df269e"/>
+<g class="megaphone" transform="translate(41 25) rotate(-16)"><path d="M0 0L38-16V28L0 14Z" fill="#fff1cc" stroke="#e6a638" stroke-width="2"/><rect x="-9" y="0" width="12" height="15" rx="4" fill="#ffcf54"/><path d="M7 16L11 35H22L18 19" fill="#ffcf54"/><path d="M48-9L58-15M50 5H62M48 20L58 26" stroke="#ffcf54" stroke-width="4" stroke-linecap="round"/></g><g class="base-face" fill="#182b43"><ellipse class="eye" cx="-22" cy="-3" rx="6" ry="9"/><ellipse class="eye" cx="22" cy="-3" rx="6" ry="9"/><path d="M-12 18Q0 32 12 18" fill="none" stroke="#182b43" stroke-width="4" stroke-linecap="round"/></g><g class="expression-face" transform="translate(0 0) scale(0.48)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ 
+</g><g class="writing-prop" transform="translate(20 40) scale(0.42)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g></g></g><text y="96" text-anchor="middle" fill="#7a879b" font-size="15" font-family="system-ui">Marketing</text></g>
+<g transform="translate(550 955)"><g class="character blogger" role="button" tabindex="0" aria-label="Say hello to Quill, the blogger emoji" data-name="blogger"><title>Quill · the blogging storyteller</title><g class="motion sage-motion"><rect x="-56" y="-62" width="112" height="129" rx="22" fill="url(#purple)"/><path d="M-38-62V67" stroke="#8442c5" stroke-width="5"/><path d="M-62-41H-45M-62-18H-45M-62 5H-45M-62 28H-45M-62 51H-45" stroke="#e0c7ff" stroke-width="6" stroke-linecap="round"/>
+<path d="M-22 40H25M-22 51H11" stroke="#e8d5ff" stroke-width="4" stroke-linecap="round"/><g class="quill"><path d="M32 28Q30-9 66-36Q83 1 32 28Z" fill="#fff4db"/><path d="M25 43L61-25M39 18L38 1M48 2L62 0" stroke="#d09b4d" stroke-width="3" stroke-linecap="round"/></g><g class="base-face" fill="#182b43"><ellipse class="eye" cx="-22" cy="-3" rx="6" ry="9"/><ellipse class="eye" cx="22" cy="-3" rx="6" ry="9"/><path d="M-12 18Q0 32 12 18" fill="none" stroke="#182b43" stroke-width="4" stroke-linecap="round"/></g><g class="expression-face" transform="translate(0 0) scale(0.48)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ 
+</g><g class="writing-prop" transform="translate(20 40) scale(0.42)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g></g></g><text y="96" text-anchor="middle" fill="#7a879b" font-size="15" font-family="system-ui">Blogger</text></g>
+<g transform="translate(760 955)"><g class="character designer" role="button" tabindex="0" aria-label="Say hello to Hue, the designer emoji" data-name="designer"><title>Hue · the design daydreamer</title><g class="motion sage-motion"><path d="M-64 0C-68-43-33-68 9-63C62-57 80-18 58 9C44 26 17 4 14 27C12 44 41 40 27 58C-4 88-62 48-64 0Z" fill="url(#orange)"/><circle cx="-42" cy="-32" r="9" fill="#ff60bb"/><circle cx="-16" cy="-47" r="9" fill="#9f73f7"/><circle cx="15" cy="-45" r="9" fill="#34c8d5"/><circle cx="42" cy="-26" r="9" fill="#8be545"/><g class="paintbrush" transform="rotate(22 49 32)"><path d="M43 8H54L52 65Q48 75 44 65Z" fill="#8765c2"/><path d="M41-3H56V16H41Z" fill="#dce9f5"/><path d="M41-3Q37-22 49-31Q60-20 56-3Z" fill="#30c7be"/></g><g class="base-face" fill="#182b43"><ellipse class="eye" cx="-22" cy="-3" rx="6" ry="9"/><ellipse class="eye" cx="22" cy="-3" rx="6" ry="9"/><path d="M-12 18Q0 32 12 18" fill="none" stroke="#182b43" stroke-width="4" stroke-linecap="round"/></g><g class="expression-face" transform="translate(0 0) scale(0.48)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3"/>
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e"/><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5"/>
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65"/>
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29"/>
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e"/><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e"/>
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none"/><circle cx="50" cy="-7" r="3" fill="white" stroke="none"/>
+  <path d="M-9 33Q3 27 18 31"/>
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4"/><circle cx="82" cy="-53" r="6"/>
+   <rect x="83" y="-99" width="66" height="37" rx="18"/>
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3"/><circle class="thought-dot" cx="116" cy="-80" r="3"/><circle class="thought-dot" cx="130" cy="-80" r="3"/></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30"/>
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21"/>
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38"/>
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none"/>
+ </g>
+ 
+</g><g class="writing-prop" transform="translate(20 40) scale(0.42)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2"/>
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round"/>
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5"/><path d="M4 18L3 29L14 24" fill="#eac39b"/><path d="M3 29L4 23L8 26Z" fill="#20314c"/><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9"/></g>
+</g></g></g><text y="96" text-anchor="middle" fill="#7a879b" font-size="15" font-family="system-ui">Designer</text></g>
+<!-- The wordmark is vector artwork, so it remains crisp at every size. -->
+<g aria-label="Pilo" role="img" fill="url(#ink)">
+<path d="M365 782V692C365 653 391 631 429 631C468 631 495 655 495 690C495 728 469 752 430 752H420" fill="none" stroke="url(#ink)" stroke-width="43" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="523" y="703" width="44" height="101" rx="22"/><circle class="logo-dot" cx="545" cy="666" r="22" fill="#0789ff"/>
+<rect x="582" y="639" width="44" height="165" rx="22"/>
+<path d="M708 677A65 64 0 1 0 708 805A65 64 0 1 0 708 677ZM708 717A25 24 0 1 1 708 765A25 24 0 1 1 708 717Z" fill-rule="evenodd"/>
+</g>
+</svg>
+<p class="caption">Fifteen little personalities. One happy place.</p>
+<div class="controls expression-controls" role="group" aria-label="Character expression">
+<button data-expression="idle" aria-pressed="true">Original</button>
+<button data-expression="thinking" aria-pressed="false">Thinking</button>
+<button data-expression="writing" aria-pressed="false">Writing</button>
+<button data-expression="sad" aria-pressed="false">Sad</button>
+<button data-expression="happy" aria-pressed="false">Happy</button>
+</div>
+<div class="controls" aria-label="Animation controls">
+<button id="pause" aria-pressed="false">Pause animation</button>
+<button id="celebrate" class="primary">✦ Everyone, dance!</button>
+<label class="speed-control" for="speed">Tempo <input id="speed" type="range" min="0.5" max="2" step="0.25" value="1"><output id="tempo" for="speed">1×</output></label>
+</div>
+<p class="hint">Tap a friend to say hello · Space to pause</p>
+<p id="announcement" role="status" aria-live="polite" style="position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden"></p>
+</main>
+<script>
+const scene = document.querySelector('.scene');
+const pauseButton = document.querySelector('#pause');
+const danceButton = document.querySelector('#celebrate');
+const speedInput = document.querySelector('#speed');
+const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+let paused = motionPreference.matches;
+let partyTimer;
+const activeAnimations = new Map();
+const expressionCaptions = {
+  idle: 'Fifteen little personalities. One happy place.',
+  thinking: 'A little curiosity. A big idea on the way.',
+  writing: 'Heads down. Bringing little ideas to life.',
+  sad: 'Some days call for a little extra kindness.',
+  happy: 'Good company. Very happy little hearts.'
+};
+function setExpression(expression) {
+  if (!Object.hasOwn(expressionCaptions, expression)) return;
+  clearTimeout(partyTimer);
+  scene.classList.remove('celebrating');
+  activeAnimations.forEach(animation => animation.cancel());
+  activeAnimations.clear();
+  scene.dataset.expression = expression;
+  document.querySelectorAll('.expression-controls button').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.expression === expression));
+  });
+  document.querySelector('.caption').textContent = expressionCaptions[expression];
+  document.querySelector('#announcement').textContent = `All fifteen friends are ${expression === 'idle' ? 'back to their original expressions' : expression}.`;
+}
+document.querySelectorAll('.expression-controls button').forEach(button => {
+  button.addEventListener('click', () => setExpression(button.dataset.expression));
+});
+function renderPlayback() {
+  document.body.classList.toggle('paused', paused);
+  pauseButton.textContent = paused ? 'Play animation' : 'Pause animation';
+  pauseButton.setAttribute('aria-pressed', String(paused));
+  activeAnimations.forEach(animation => paused ? animation.pause() : animation.play());
+}
+function syncMotionPreference() {
+  document.body.classList.toggle('reduced', motionPreference.matches);
+  paused = motionPreference.matches;
+  renderPlayback();
+}
+syncMotionPreference();
+motionPreference.addEventListener('change', syncMotionPreference);
+pauseButton.addEventListener('click', () => { paused = !paused; renderPlayback(); });
+speedInput.addEventListener('input', () => {
+  document.documentElement.style.setProperty('--speed', speedInput.value);
+  document.querySelector('#tempo').value = `${speedInput.value}×`;
+});
+function greet(character) {
+  document.querySelector('#announcement').textContent = `${character.querySelector('title').textContent} says hello!`;
+  if (motionPreference.matches || paused) return;
+  activeAnimations.get(character)?.cancel();
+  const animation = character.animate([
+    {transform:'translateY(0) rotate(0deg)'},
+    {transform:'translateY(-32px) rotate(-7deg)',offset:.4},
+    {transform:'translateY(-8px) rotate(5deg)',offset:.75},
+    {transform:'translateY(0) rotate(0deg)'}
+  ], {duration:850, easing:'ease-in-out'});
+  activeAnimations.set(character, animation);
+  animation.onfinish = () => activeAnimations.delete(character);
+}
+document.querySelectorAll('.character').forEach(character => {
+  character.addEventListener('click', () => greet(character));
+  character.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {event.preventDefault(); greet(character);}
+  });
+});
+danceButton.addEventListener('click', () => {
+  setExpression('happy');
+  document.querySelector('#announcement').textContent = 'The whole Pilo crew says hello!';
+  if (motionPreference.matches) return;
+  paused = false; renderPlayback();
+  clearTimeout(partyTimer);
+  scene.classList.remove('celebrating');
+  void scene.getBoundingClientRect();
+  scene.classList.add('celebrating');
+  partyTimer = setTimeout(() => scene.classList.remove('celebrating'), 1950);
+  const bounds = scene.getBoundingClientRect();
+  for (let i = 0; i < 36; i++) {
+    const spark = document.createElement('span');
+    spark.className = 'spark';
+    spark.style.left = `${bounds.left + bounds.width / 2 + scrollX}px`;
+    spark.style.top = `${bounds.top + bounds.height * .45 + scrollY}px`;
+    spark.style.background = ['#1687ff','#b469f5','#ff4dce','#a0e944','#ffcd35'][i % 5];
+    spark.style.setProperty('--x', `${(Math.random() - .5) * Math.min(innerWidth, 850)}px`);
+    spark.style.setProperty('--y', `${(Math.random() - .6) * 500}px`);
+    document.body.append(spark);
+    spark.addEventListener('animationend', () => spark.remove(), {once:true});
+  }
+});
+scene.addEventListener('pointermove', event => {
+  if (motionPreference.matches || paused) return;
+  const bounds = scene.getBoundingClientRect();
+  const x = ((event.clientX - bounds.left) / bounds.width - .5) * 6;
+  const y = ((event.clientY - bounds.top) / bounds.height - .5) * 5;
+  scene.querySelectorAll('.gaze').forEach(eye => eye.style.translate = `${x}px ${y}px`);
+});
+scene.addEventListener('pointerleave', () => scene.querySelectorAll('.gaze').forEach(eye => eye.style.translate = '0px 0px'));
+document.addEventListener('keydown', event => {
+  if (event.code === 'Space' && event.target === document.body) {
+    event.preventDefault(); paused = !paused; renderPlayback();
+  }
+});
+</script>
+</body>
+</html>
