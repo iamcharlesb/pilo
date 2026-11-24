@@ -386,6 +386,8 @@ export class ChatAnthropic extends BaseChatModel {
     }
 
     const data = (await response.json()) as {
+      model?: string;
+      usage?: { input_tokens?: number; output_tokens?: number };
       content?: Array<{
         type: string;
         text?: string;
@@ -395,7 +397,15 @@ export class ChatAnthropic extends BaseChatModel {
       }>;
     };
 
-    return this.parseAssistantMessage(data);
+    const parsed = this.parseAssistantMessage(data);
+    return {
+      ...parsed,
+      metadata: {
+        ...(parsed.metadata ?? {}),
+        model: data.model ?? this.modelName,
+        ...(data.usage ? { usage: data.usage } : {})
+      }
+    };
   }
 
   async generateStructured<T>(

@@ -185,6 +185,9 @@ export class ChatOllama extends BaseChatModel {
     eval_count?: number;
   }> {
     const controller = new AbortController();
+    const onExternalAbort = () => controller.abort();
+    options?.signal?.addEventListener("abort", onExternalAbort, { once: true });
+    if (options?.signal?.aborted) controller.abort();
     const timeoutId = setTimeout(() => controller.abort(), options?.timeout ?? this.timeout);
 
     let response: Response;
@@ -197,6 +200,7 @@ export class ChatOllama extends BaseChatModel {
       });
     } finally {
       clearTimeout(timeoutId);
+      options?.signal?.removeEventListener("abort", onExternalAbort);
     }
 
     if (!response.ok) {

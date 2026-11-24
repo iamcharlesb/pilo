@@ -189,6 +189,33 @@ export class AgentGatewayServer {
         });
       }
       const pathname = url.pathname;
+
+      // Reject cross-origin mutating requests unless explicitly permitted by corsOrigin,
+      // and require application/json on POST routes so text/plain simple-CORS POSTs cannot trigger execution.
+      if (method === "POST" || method === "PUT" || method === "PATCH" || method === "DELETE") {
+        const originHeader = Array.isArray(headers.origin) ? headers.origin[0] : headers.origin;
+        if (originHeader) {
+          const allowed =
+            this.corsOrigin === "*" ||
+            (this.corsOrigin ? originHeader === this.corsOrigin : false) ||
+            originHeader === baseUrl;
+          if (!allowed) {
+            throw Object.assign(new Error(`Cross-origin ${method} request from "${originHeader}" is forbidden.`), {
+              statusCode: 403,
+              code: "CROSS_ORIGIN_FORBIDDEN"
+            });
+          }
+        }
+        const contentTypeHeader = Array.isArray(headers["content-type"])
+          ? headers["content-type"][0]
+          : headers["content-type"];
+        if (method === "POST" && contentTypeHeader && !contentTypeHeader.toLowerCase().includes("application/json")) {
+          throw Object.assign(new Error("POST requests must use Content-Type: application/json."), {
+            statusCode: 415,
+            code: "UNSUPPORTED_MEDIA_TYPE"
+          });
+        }
+      }
       if (method === "GET" && pathname === "/health") {
         sendJson(response, 200, {
           ok: true,

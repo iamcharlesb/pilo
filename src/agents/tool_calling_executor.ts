@@ -122,7 +122,8 @@ export class ToolCallingAgentExecutor {
 
   async call(
     inputs: ChainValues,
-    callbacks: CallbackHandler[] = []
+    callbacks: CallbackHandler[] = [],
+    runOptions?: { signal?: AbortSignal }
   ): Promise<ChainValues> {
     const runId = uuidv4();
     const threadId = this.resolveThreadId(inputs, runId);
@@ -157,7 +158,7 @@ export class ToolCallingAgentExecutor {
       details: { threadId }
     });
 
-    return this.execute(checkpoint, callbacks);
+    return this.execute(checkpoint, callbacks, runOptions?.signal);
   }
 
   async resume(threadId: string, callbacks: CallbackHandler[] = []): Promise<ChainValues> {
@@ -318,9 +319,16 @@ export class ToolCallingAgentExecutor {
 
   private async execute(
     checkpoint: AgentCheckpoint,
-    callbacks: CallbackHandler[]
+    callbacks: CallbackHandler[],
+    signal?: AbortSignal
   ): Promise<ChainValues> {
+    const throwIfAborted = () => {
+      if (signal?.aborted) {
+        throw Object.assign(new Error("Agent execution aborted."), { name: "AbortError", canceled: true });
+      }
+    };
     try {
+      throwIfAborted();
       const runBudget = this.consumeBudget("agent_runs", checkpoint.iteration === 0 ? 1 : 0, checkpoint.threadId);
       if (runBudget && !runBudget.allowed) {
         throw new Error(runBudget.reason);
@@ -342,11 +350,13 @@ export class ToolCallingAgentExecutor {
       });
 
       while (checkpoint.iteration < this.maxIterations) {
+        throwIfAborted();
         if ((checkpoint.pendingToolCalls?.length ?? 0) > 0) {
-          const paused = await this.executePendingToolCalls(checkpoint, callbacks);
+          const paused = await this.executePendingToolCalls(checkpoint, callbacks, signal);
           if (paused) {
             return this.checkpointToResult(checkpoint);
           }
+          throwIfAborted();
           checkpoint.iteration += 1;
           await this.saveCheckpoint(checkpoint, {
             stage: "tool_results",
@@ -355,7 +365,8 @@ export class ToolCallingAgentExecutor {
           continue;
         }
 
-        const assistant = await this.agent.next(checkpoint.messages);
+        const assistant = await this.agent.next(checkpoint.messages, { signal });
+        throwIfAborted();
         checkpoint.messages.push({
           role: "ai",
           content: assistant.content,
@@ -385,8 +396,9 @@ export class ToolCallingAgentExecutor {
       }
 
       if (this.earlyStoppingMethod === "generate") {
+        throwIfAborted();
         try {
-          const forced = await this.agent.next(checkpoint.messages, { toolChoice: "none" });
+          const forced = await this.agent.next(checkpoint.messages, { toolChoice: "none", signal });
           checkpoint.iteration += 1;
           return this.finish(checkpoint, forced.content, callbacks);
         } catch {
@@ -422,9 +434,13 @@ export class ToolCallingAgentExecutor {
 
   private async executePendingToolCalls(
     checkpoint: AgentCheckpoint,
-    callbacks: CallbackHandler[]
+    callbacks: CallbackHandler[],
+    signal?: AbortSignal
   ): Promise<boolean> {
     while ((checkpoint.pendingToolCalls?.length ?? 0) > 0) {
+      if (signal?.aborted) {
+        throw Object.assign(new Error("Agent execution aborted."), { name: "AbortError", canceled: true });
+      }
       const toolCall = checkpoint.pendingToolCalls![0];
       const { action } = this.buildPendingAction(checkpoint, toolCall);
 

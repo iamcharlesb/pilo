@@ -323,6 +323,9 @@ export class ChatOpenAI extends BaseChatModel {
     }
 
     const controller = new AbortController();
+    const onExternalAbort = () => controller.abort();
+    options?.signal?.addEventListener("abort", onExternalAbort, { once: true });
+    if (options?.signal?.aborted) controller.abort();
     const timeoutId = setTimeout(() => controller.abort(), options?.timeout ?? this.timeout);
 
     let response: Response;
@@ -335,6 +338,7 @@ export class ChatOpenAI extends BaseChatModel {
       });
     } finally {
       clearTimeout(timeoutId);
+      options?.signal?.removeEventListener("abort", onExternalAbort);
     }
 
     if (!response.ok) {
@@ -343,6 +347,8 @@ export class ChatOpenAI extends BaseChatModel {
     }
 
     const data = (await response.json()) as {
+      model?: string;
+      usage?: { prompt_tokens?: number; completion_tokens?: number; total_tokens?: number };
       choices: Array<{
         message: {
           role: string;
@@ -357,10 +363,18 @@ export class ChatOpenAI extends BaseChatModel {
       }>;
     };
 
-    return this.parseAssistantMessage(data.choices[0]?.message ?? {
+    const parsed = this.parseAssistantMessage(data.choices[0]?.message ?? {
       role: "assistant",
       content: ""
     });
+    return {
+      ...parsed,
+      metadata: {
+        ...(parsed.metadata ?? {}),
+        model: data.model ?? this.modelName,
+        ...(data.usage ? { usage: data.usage } : {})
+      }
+    };
   }
 
   async generateStructured<T>(

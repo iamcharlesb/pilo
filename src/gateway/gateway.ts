@@ -734,6 +734,22 @@ export class AgentGateway {
         : this.budgetManager.consume(name, amount);
 
     if (!decision.allowed) {
+      // Exhaust any remaining allowance still recorded in the budget manager so subsequent
+      // over-budget calls cannot keep invoking paid backends.
+      const scopedWithUsage = this.budgetManager as ScopedBudgetController & {
+        getScopedUsage?: (scope: string, name: string) => { remaining: number } | undefined;
+      };
+      const currentUsage =
+        scope && typeof scopedWithUsage.getScopedUsage === "function"
+          ? scopedWithUsage.getScopedUsage(scope, name)
+          : this.budgetManager.getUsage(name);
+      if (currentUsage && currentUsage.remaining > 0) {
+        if (scope && typeof scoped.consumeScoped === "function") {
+          scoped.consumeScoped(scope, name, currentUsage.remaining);
+        } else {
+          this.budgetManager.consume(name, currentUsage.remaining);
+        }
+      }
       throw createGatewayError(
         decision.reason ?? `Budget "${name}" exceeded.`,
         429,
@@ -1142,11 +1158,16 @@ export class AgentGateway {
 
       if (backend.agent) {
         const result = await backend.agent.ask(request.input, {
-          threadId: request.sessionId
+          threadId: request.sessionId,
+          signal: taskAbortController.signal
         });
         outputText = result.text;
       } else if (backend.executor) {
-        const result = await backend.executor.call({ input: request.input });
+        const result = await backend.executor.call(
+          { input: request.input },
+          [],
+          { signal: taskAbortController.signal }
+        );
         outputText = String(result["output"] ?? result["text"] ?? "");
       } else if (backend.handler) {
         const result = await backend.handler(request, taskContext);

@@ -85,6 +85,7 @@ export interface RunConfig {
 export interface RunOptions {
   stop?: string[];
   timeout?: number;
+  signal?: AbortSignal;
   maxTokens?: number;
   temperature?: number;
   topP?: number;

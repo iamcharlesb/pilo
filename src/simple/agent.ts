@@ -99,6 +99,7 @@ export interface CreateAgentConfig extends BaseChatModelConfig {
 export interface SimpleAskOptions {
   threadId?: string;
   callbacks?: CallbackHandler[];
+  signal?: AbortSignal;
 }
 
 export interface SimpleAskResult extends ChainValues {
@@ -413,7 +414,8 @@ export class SimpleAgent {
         input,
         threadId: options.threadId ?? this.defaultThreadId
       },
-      options.callbacks ?? []
+      options.callbacks ?? [],
+      { signal: options.signal }
     );
 
     return {

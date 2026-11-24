@@ -203,9 +203,31 @@ export class ChatGemini extends BaseChatModel {
       candidates?: Array<{
         content?: { parts?: GeminiPart[] };
       }>;
+      usageMetadata?: {
+        promptTokenCount?: number;
+        candidatesTokenCount?: number;
+        totalTokenCount?: number;
+      };
     };
 
-    return this.parseCandidate(data.candidates?.[0] ?? {});
+    const parsed = this.parseCandidate(data.candidates?.[0] ?? {});
+    const usage = data.usageMetadata
+      ? {
+          prompt_tokens: data.usageMetadata.promptTokenCount ?? 0,
+          completion_tokens: data.usageMetadata.candidatesTokenCount ?? 0,
+          total_tokens:
+            data.usageMetadata.totalTokenCount ??
+            (data.usageMetadata.promptTokenCount ?? 0) + (data.usageMetadata.candidatesTokenCount ?? 0)
+        }
+      : undefined;
+    return {
+      ...parsed,
+      metadata: {
+        ...(parsed.metadata ?? {}),
+        model: this.modelName,
+        ...(usage ? { usage } : {})
+      }
+    };
   }
 
   async generateStructured<T>(

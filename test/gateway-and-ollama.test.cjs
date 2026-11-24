@@ -717,3 +717,175 @@ test("ChatOllama stream enforces timeout across delayed streaming body chunks", 
     await new Promise((resolve, reject) => delayedServer.close((err) => (err ? reject(err) : resolve())));
   }
 });
+
+test("AgentGatewayServer blocks cross-origin and text/plain POSTs without invoking backends", async () => {
+  let modelCalls = 0;
+  const gateway = new fw.AgentGateway({
+    allowAnonymous: true,
+    llmBackends: [
+      {
+        id: "mock",
+        provider: "mock",
+        model: "mock-1",
+        chatModel: {
+          generate: async () => {
+            modelCalls += 1;
+            return { generations: [[{ text: "ok" }]] };
+          }
+        }
+      }
+    ]
+  });
+  const server = new fw.AgentGatewayServer({ gateway, host: "127.0.0.1", port: 0 });
+  const { url } = await server.start();
+  try {
+    const crossOrigin = await fetch(`${url}/v1/chat/completions`, {
+      method: "POST",
+      headers: { Origin: "https://evil.example", "Content-Type": "text/plain" },
+      body: JSON.stringify({ model: "mock", messages: [{ role: "user", content: "hi" }] })
+    });
+    assert.equal(crossOrigin.status, 403);
+    assert.equal(modelCalls, 0);
+
+    const textPlain = await fetch(`${url}/v1/chat/completions`, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify({ model: "mock", messages: [{ role: "user", content: "hi" }] })
+    });
+    assert.equal(textPlain.status, 415);
+    assert.equal(modelCalls, 0);
+  } finally {
+    await server.stop();
+  }
+});
+
+test("AgentGateway exhausts remaining budget on first breach and preserves ChatOpenAI tool-call usage", async () => {
+  let paidCalls = 0;
+  const gateway = new fw.AgentGateway({
+    allowAnonymous: true,
+    budgetManager: new fw.BudgetManager({ limits: [{ name: "total_tokens", max: 1 }] }),
+    llmBackends: [
+      {
+        id: "paid",
+        provider: "mock",
+        model: "mock-1",
+        chatModel: {
+          generate: async () => {
+            paidCalls += 1;
+            return { generations: [[{ text: "ok" }]], llmOutput: { usage: { total_tokens: 2 } } };
+          }
+        }
+      }
+    ]
+  });
+
+  // First call breaches max (2 > 1), rejects AND exhausts remaining allowance
+  await assert.rejects(
+    () => gateway.routeChat({ model: "paid", messages: [{ role: "human", content: "1" }] }),
+    (err) => err.code === "BUDGET_EXCEEDED"
+  );
+  // Second call is rejected BEFORE invoking paid backend
+  await assert.rejects(
+    () => gateway.routeChat({ model: "paid", messages: [{ role: "human", content: "2" }] }),
+    (err) => err.code === "BUDGET_EXCEEDED"
+  );
+  assert.equal(paidCalls, 1);
+
+  // Verify ChatOpenAI.callWithTools preserves usage metadata for gateway accounting
+  const mockOpenAI = http.createServer((_req, res) => {
+    res.setHeader("Content-Type", "application/json");
+    res.end(
+      JSON.stringify({
+        model: "gpt-4o",
+        usage: { prompt_tokens: 6, completion_tokens: 4, total_tokens: 10 },
+        choices: [{ message: { role: "assistant", content: "done" }, finish_reason: "stop" }]
+      })
+    );
+  });
+  await new Promise((resolve) => mockOpenAI.listen(0, "127.0.0.1", resolve));
+  const { port } = mockOpenAI.address();
+  try {
+    const gw2 = new fw.AgentGateway({
+      allowAnonymous: true,
+      llmBackends: [
+        {
+          id: "openai-mock",
+          provider: "openai",
+          model: "gpt-4o",
+          chatModel: new fw.ChatOpenAI({
+            apiKey: "unit-test-openai-key",
+            model: "gpt-4o",
+            baseUrl: `http://127.0.0.1:${port}`
+          })
+        }
+      ]
+    });
+    const res = await gw2.routeChat({
+      model: "openai-mock",
+      messages: [{ role: "human", content: "hi" }],
+      tools: [new fw.CalculatorTool().toSchema()]
+    });
+    assert.equal(res.usage.totalTokens, 10);
+  } finally {
+    await new Promise((resolve, reject) => mockOpenAI.close((err) => (err ? reject(err) : resolve())));
+  }
+});
+
+test("AgentGateway cancelTask propagates AbortSignal to local SimpleAgent and stops tool turns", async () => {
+  let toolExecutions = 0;
+  let modelTurns = 0;
+  let turnStartedResolve;
+  const turnStarted = new Promise((resolve) => {
+    turnStartedResolve = resolve;
+  });
+
+  const slowModel = {
+    modelName: "slow-local",
+    _modelType: () => "mock",
+    call: async () => ({ role: "ai", content: "done" }),
+    callWithTools: async (_msgs, _tools, opts) => {
+      modelTurns += 1;
+      turnStartedResolve();
+      await new Promise((resolve, reject) => {
+        const t = setTimeout(resolve, 400);
+        opts?.signal?.addEventListener(
+          "abort",
+          () => {
+            clearTimeout(t);
+            reject(new Error("aborted"));
+          },
+          { once: true }
+        );
+      });
+      return {
+        role: "ai",
+        content: "",
+        toolCalls: [{ id: "tc1", type: "function", name: "counter", arguments: "{}" }]
+      };
+    }
+  };
+
+  const agent = fw.createAgent({
+    chatModel: slowModel,
+    tools: {
+      counter: () => {
+        toolExecutions += 1;
+        return "counted";
+      }
+    }
+  });
+
+  const gateway = new fw.AgentGateway({ allowAnonymous: true });
+  gateway.registerAgent({
+    card: { id: "local-agent", name: "Local Agent", description: "Test", version: "0.1.0" },
+    agent
+  });
+
+  const taskPromise = gateway.sendTask({ id: "cancel-local-1", agentId: "local-agent", input: "go" });
+  await turnStarted;
+  await gateway.cancelTask("cancel-local-1");
+  const result = await taskPromise;
+  assert.equal(result.state, "canceled");
+  assert.equal(modelTurns, 1);
+  assert.equal(toolExecutions, 0);
+});
