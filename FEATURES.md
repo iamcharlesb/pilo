@@ -26,6 +26,7 @@ Creating a huddle starts no model request. Sending a question may incur provider
 - Readable activity labels for live and restored runs, with expandable step details.
 - Browser profiles, local terminal tools, document artifacts, HTML previews, and source-linked research.
 - Compact operating instructions, separate voice files, and playbooks loaded when relevant.
+- Demo Director skill and specialist bot for timed storyboards, narration, planned captions, capture checklists and downloadable production packs. Video recording and editing remain manual.
 
 ## Agent Gateway & Ollama Support
 
