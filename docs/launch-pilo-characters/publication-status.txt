@@ -1,0 +1,37 @@
+PILO FEATURE LAUNCH — VERIFIED STATUS
+
+Code
+- Parent repository main: 666bd90 (includes the launch packet).
+- Browser-agent branch codex/openbuddy-cli-preview: d4ef3e8.
+- Latest complete browser-runtime validation: 513 tests passed.
+- The engine dropdown and 38px sidebar icons were included in that validation and push.
+
+Published on Reddit, using the existing signed-in account
+1. Animated character system, r/SideProject:
+https://www.reddit.com/r/SideProject/comments/1y46q11/i_built_a_15character_animated_crew_for_my_local/
+The community rejected image uploads, so this post links to the published animation asset. Publication and body text were verified in the browser.
+
+2. Role avatars and saved-preference migration, r/buildinpublic:
+https://www.reddit.com/r/buildinpublic/comments/1y46r28/a_small_multiagent_ui_lesson_changing_a_default/
+The role-identity image was uploaded and verified on the published post. The live community rules allow contextual progress/lessons posts and require transparency; the post discloses project ownership and AI assistance.
+
+Published on X in the user-specified Firefox session
+https://x.com/Charles04724470/status/2125128234878783858
+The post shows the prepared caption, GitHub source link, #Pilo #CSS #BuildInPublic, and the looping Pilo GIF. Its published timeline entry and GIF were verified. Do not publish this same announcement again.
+
+Medium
+- Correct account @iamcharlesb was verified in Firefox.
+- Article 1 is saved as draft cc1d57aa2d35, with its animation attached:
+https://medium.com/p/cc1d57aa2d35/edit
+- Article 1 reached publication settings with its animation attached. Tags and final publication are not yet verified.
+- The second article remains prepared locally in 02-distinct-role-avatars.txt.
+- The user explicitly approved publishing both stories with subscriber email notifications enabled. Do not ask again or turn notifications off.
+- No Medium publication is claimed by this status file. The computer-use service repeatedly failed to reconnect after the settings page. Inspect the existing draft/publication state before retrying, to avoid duplicate publication.
+
+Pending
+- Topic tags for Medium.
+- Subscriber emails are authorized: user selected “Publish and notify subscribers.” Leave the checkbox enabled.
+- Publish both Medium articles and verify final URLs.
+- Publish the second role-identity announcement on X with its feature image.
+
+The original GIF post is already published. Reconcile existing posts before any retry to avoid duplicates.

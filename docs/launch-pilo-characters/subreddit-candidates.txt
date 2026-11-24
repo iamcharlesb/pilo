@@ -1,6 +1,6 @@
 SUBREDDIT RESEARCH — CANDIDATES, NOT APPROVED POSTING DESTINATIONS
 
-No posts have been submitted by this packet. Check the live rules, required flairs, account eligibility, AI-content policies and promotion threads before submitting. Do not bulk-post identical copy.
+Two adapted posts have been published: r/SideProject and r/buildinpublic. See publication-status.txt for URLs. Check live rules, required flairs, account eligibility, AI-content policies and promotion threads before any additional submissions. Do not bulk-post identical copy.
 
 1. r/SideProject — working project demo and specific feedback question.
 2. r/AI_Agents — agent interface and status-event design.
@@ -22,3 +22,7 @@ No posts have been submitted by this packet. Check the live rules, required flai
 18. r/ChatGPTCoding — only if implementation/showcase rules allow this topic.
 
 Direct rules pages checked through web access for SideProject, AI_Agents, InternetIsBeautiful and webdev returned rule-page shells without readable rules. Their promotion eligibility remains unverified. Third-party rule summaries disagree, so they are not used as authorization to publish.
+
+Live browser verification after the initial web research:
+- r/SideProject: sharing/feedback context verified; no additional rule entries were displayed in the composer. Image upload was rejected by the community, so an animation link was used.
+- r/buildinpublic: live rules permit project progress with context, lessons, feedback and transparent affiliation. No context-free promotion or spam. An adapted development lesson with ownership/AI-assistance disclosure and its own feature image was published.

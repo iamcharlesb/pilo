@@ -1,6 +1,6 @@
 PILO CHARACTER LAUNCH PACKET
 
-Publication status: prepared locally; not published to Medium, Reddit, or X.
+Publication status: two Reddit posts and the animated X announcement are published. Medium remains in progress. See publication-status.txt for verified URLs and pending actions.
 
 Articles
 - 01-animated-agent-states.txt: animated event-based agent expressions.
