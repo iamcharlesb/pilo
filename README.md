@@ -7,6 +7,8 @@
 
 **Pure Node.js AI Agent Runtime, Native Agent Gateway (MCP + A2A + Any Model), and Local Specialist Bots — Source-Available.**
 
+[Gamifying Agent Thinking](docs/gamified-thinking.md): four-agent supervised practice with verified scoring, increasing challenge difficulty, and reviewed reusable instructions.
+
 <img src="docs/assets/pilo-social.png" alt="Pilo and its specialist bots" width="460" />
 
 ## Index

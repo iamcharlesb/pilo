@@ -28,6 +28,9 @@ Runnable TypeScript examples for Fireworks++. Each example is self-contained and
 | `20-management-server.ts` | Self-hosted management server with bearer auth |
 | `21-simple-create-agent.ts` | High-level `createAgent()` facade with object-style tools |
 | `22-mcp-client-server.ts` | MCP server/client flow plus MCP tools inside `createAgent()` |
+| `23-gamified-thinking.cjs` | Four-agent supervised practice, verified points, increasing difficulty, and pending lessons; offline by default |
+
+For the supervised-practice example, see [Gamifying Agent Thinking](../docs/gamified-thinking.md) for environment configuration and offline/live execution.
 
 ## Running Examples
 

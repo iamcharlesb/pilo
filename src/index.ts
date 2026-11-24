@@ -51,6 +51,9 @@ export * from "./callbacks";
 // Evaluations
 export * from "./evaluations";
 
+// Supervised practice and gamified agent progression
+export * from "./thinking";
+
 // Checkpoints
 export * from "./checkpoints";
 
