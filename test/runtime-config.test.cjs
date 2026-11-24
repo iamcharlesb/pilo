@@ -47,7 +47,9 @@ test('source scanner blocks credentials and never prints their values', () => {
     assert.match(result.stderr, /bad.js:1/);
     assert.ok(!`${result.stdout}${result.stderr}`.includes(secret));
     fs.writeFileSync(path.join(repo, 'bad.js'), 'const model = process.env.OPENAI_MODEL;\n');
-    const clean = spawnSync(process.execPath, ['scripts/check-secrets.cjs'], { cwd: repo, encoding: 'utf8' });
+    fs.mkdirSync(path.join(repo, 'empty-module'));
+    execFileSync('git', ['update-index', '--add', '--cacheinfo', '160000,' + '1'.repeat(40) + ',empty-module'], { cwd: repo });
+    const clean = spawnSync(process.execPath, ['scripts/check-secrets.cjs'], { cwd: repo, encoding: 'utf8', timeout: 5000 });
     assert.equal(clean.status, 0, clean.stderr);
   } finally { fs.rmSync(repo, { recursive: true, force: true }); }
 });

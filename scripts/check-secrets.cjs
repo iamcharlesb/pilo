@@ -29,7 +29,12 @@ function scan(repo) {
   for (const file of files) {
     const absolute = path.join(repo, file);
     if (!fs.existsSync(absolute)) continue;
-    if (fs.statSync(absolute).isDirectory()) { scan(absolute); continue; }
+    if (fs.statSync(absolute).isDirectory()) {
+      // An uninitialized gitlink is an empty directory. Git discovery there
+      // would resolve back to this parent repository and recurse forever.
+      if (fs.existsSync(path.join(absolute, '.git'))) scan(absolute);
+      continue;
+    }
     if (/\.env(?:\.(?!example$).*)?$/.test(path.basename(file))) {
       // An ignored local .env is absent from ls-files. Any included one is unsafe.
       console.error(`${path.relative(root, absolute)}: environment file included in repository`);
