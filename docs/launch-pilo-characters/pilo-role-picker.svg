@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1030" height="600"><style>.expression-face,.writing-prop{display:none}</style><rect width="1030" height="600" fill="#f3f7ff"/><text x="50" y="64" fill="#6b7d98" font-family="Arial" font-size="17" font-weight="700" letter-spacing="4">PILO · ROLE IDENTITIES</text><text x="50" y="125" fill="#1b2941" font-family="Arial" font-size="40" font-weight="700">A distinct face for every role.</text><rect x="35" y="185" width="215" height="280" rx="26" fill="white"/><svg x="47" y="205" width="190" height="190" viewBox="-110 -80 220 175" overflow="visible"><defs>
+<radialGradient id="byte-blue" cx="35%" cy="20%" r="85%"><stop stop-color="#48d3ff" /><stop offset=".48" stop-color="#09aaff" /><stop offset="1" stop-color="#0078e4" /></radialGradient>
+<radialGradient id="byte-skin" cx="45%" cy="30%" r="80%"><stop stop-color="#fffdf7" /><stop offset=".75" stop-color="#fff0e3" /><stop offset="1" stop-color="#e8d1c3" /></radialGradient>
+<radialGradient id="byte-green" cx="40%" cy="18%" r="90%"><stop stop-color="#c7ff67" /><stop offset=".5" stop-color="#8be538" /><stop offset="1" stop-color="#50b31d" /></radialGradient>
+<radialGradient id="byte-pink" cx="35%" cy="20%" r="90%"><stop stop-color="#ff80e9" /><stop offset=".5" stop-color="#ff35cc" /><stop offset="1" stop-color="#dc08a3" /></radialGradient>
+<radialGradient id="byte-yellow" cx="35%" cy="15%" r="95%"><stop stop-color="#ffe96b" /><stop offset=".55" stop-color="#ffca25" /><stop offset="1" stop-color="#f4a50b" /></radialGradient>
+<radialGradient id="byte-purple" cx="30%" cy="15%" r="90%"><stop stop-color="#e7afff" /><stop offset=".5" stop-color="#bd64f5" /><stop offset="1" stop-color="#9428d2" /></radialGradient>
+<linearGradient id="byte-ink" x2=".8" y2="1"><stop stop-color="#223249" /><stop offset="1" stop-color="#10172e" /></linearGradient>
+<linearGradient id="byte-iris" x2="0" y2="1"><stop stop-color="#0c1527" /><stop offset=".55" stop-color="#061a31" /><stop offset="1" stop-color="#007eff" /></linearGradient>
+<radialGradient id="byte-blush"><stop stop-color="#ff8c91" stop-opacity=".65" /><stop offset="1" stop-color="#ff8c91" stop-opacity="0" /></radialGradient>
+<radialGradient id="byte-orange" cx="35%" cy="20%" r="90%"><stop stop-color="#ffdf9a" /><stop offset=".6" stop-color="#ffb455" /><stop offset="1" stop-color="#ed8b30" /></radialGradient>
+<linearGradient id="byte-cloud-white" x2="0" y2="1"><stop stop-color="#ffffff" /><stop offset="1" stop-color="#dfedff" /></linearGradient>
+<radialGradient id="byte-graphite" cx="30%" cy="15%" r="90%"><stop stop-color="#657080" /><stop offset=".5" stop-color="#2a303c" /><stop offset="1" stop-color="#10151e" /></radialGradient>
+<radialGradient id="byte-teal" cx="30%" cy="15%" r="90%"><stop stop-color="#8ff6d5" /><stop offset=".55" stop-color="#22c5a1" /><stop offset="1" stop-color="#0a8e7b" /></radialGradient>
+<linearGradient id="byte-terminal" x2="0" y2="1"><stop stop-color="#233d4a" /><stop offset="1" stop-color="#112330" /></linearGradient>
+</defs>
+<g class="motion byte-motion"><rect x="-76" y="-55" width="152" height="107" rx="20" fill="#405e70" />
+<rect x="-68" y="-46" width="136" height="86" rx="12" fill="url(#byte-terminal)" />
+<g fill="#9ab1c1"><circle cx="-55" cy="-36" r="3" /><circle cx="-44" cy="-36" r="3" /><circle cx="-33" cy="-36" r="3" /></g>
+<path d="M-76 48H76L90 61Q92 67 82 68H-82Q-92 67-90 61Z" fill="#94afc2" /><path d="M-20 51H20L25 59H-25Z" fill="#5b788d" />
+<g class="base-face" stroke="#9df8c9" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M-18-18L-32-7L-18 4M18-18L32-7L18 4M-10 14H10" /><path class="code-cursor" d="M16 14H22" stroke="#ffd978" /></g>
+<g class="code-lines" stroke-width="3" stroke-linecap="round"><path class="code-line" d="M-49 27H-13" stroke="#68dfb6" /><path class="code-line" d="M-5 27H17" stroke="#aa9cfb" /><path class="code-line" d="M25 27H45" stroke="#ffd978" /></g><g class="expression-face" transform="translate(0 -2) scale(0.43)" stroke="#9df8c9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3" />
+  <path d="M-20 28Q0 62 20 28Z" fill="#9df8c9" /><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5" />
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65" /><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65" />
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29" />
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#9df8c9" /><ellipse cx="46" cy="0" rx="11" ry="16" fill="#9df8c9" />
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none" /><circle cx="50" cy="-7" r="3" fill="white" stroke="none" />
+  <path d="M-9 33Q3 27 18 31" />
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4" /><circle cx="82" cy="-53" r="6" />
+   <rect x="83" y="-99" width="66" height="37" rx="18" />
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3" /><circle class="thought-dot" cx="116" cy="-80" r="3" /><circle class="thought-dot" cx="130" cy="-80" r="3" /></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30" />
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21" />
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38" />
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none" />
+ </g>
+ 
+</g><g class="writing-prop" transform="translate(20 45) scale(0.42)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2" />
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round" />
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5" /><path d="M4 18L3 29L14 24" fill="#eac39b" /><path d="M3 29L4 23L8 26Z" fill="#20314c" /><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9" /></g>
+</g></g></svg><text x="142" y="432" text-anchor="middle" font-family="Arial" font-size="23" font-weight="700" fill="#24334b">Coding</text><rect x="275" y="185" width="215" height="280" rx="26" fill="white"/><svg x="287" y="205" width="190" height="190" viewBox="-90 -85 210 180" overflow="visible"><defs>
+<radialGradient id="marketing-blue" cx="35%" cy="20%" r="85%"><stop stop-color="#48d3ff" /><stop offset=".48" stop-color="#09aaff" /><stop offset="1" stop-color="#0078e4" /></radialGradient>
+<radialGradient id="marketing-skin" cx="45%" cy="30%" r="80%"><stop stop-color="#fffdf7" /><stop offset=".75" stop-color="#fff0e3" /><stop offset="1" stop-color="#e8d1c3" /></radialGradient>
+<radialGradient id="marketing-green" cx="40%" cy="18%" r="90%"><stop stop-color="#c7ff67" /><stop offset=".5" stop-color="#8be538" /><stop offset="1" stop-color="#50b31d" /></radialGradient>
+<radialGradient id="marketing-pink" cx="35%" cy="20%" r="90%"><stop stop-color="#ff80e9" /><stop offset=".5" stop-color="#ff35cc" /><stop offset="1" stop-color="#dc08a3" /></radialGradient>
+<radialGradient id="marketing-yellow" cx="35%" cy="15%" r="95%"><stop stop-color="#ffe96b" /><stop offset=".55" stop-color="#ffca25" /><stop offset="1" stop-color="#f4a50b" /></radialGradient>
+<radialGradient id="marketing-purple" cx="30%" cy="15%" r="90%"><stop stop-color="#e7afff" /><stop offset=".5" stop-color="#bd64f5" /><stop offset="1" stop-color="#9428d2" /></radialGradient>
+<linearGradient id="marketing-ink" x2=".8" y2="1"><stop stop-color="#223249" /><stop offset="1" stop-color="#10172e" /></linearGradient>
+<linearGradient id="marketing-iris" x2="0" y2="1"><stop stop-color="#0c1527" /><stop offset=".55" stop-color="#061a31" /><stop offset="1" stop-color="#007eff" /></linearGradient>
+<radialGradient id="marketing-blush"><stop stop-color="#ff8c91" stop-opacity=".65" /><stop offset="1" stop-color="#ff8c91" stop-opacity="0" /></radialGradient>
+<radialGradient id="marketing-orange" cx="35%" cy="20%" r="90%"><stop stop-color="#ffdf9a" /><stop offset=".6" stop-color="#ffb455" /><stop offset="1" stop-color="#ed8b30" /></radialGradient>
+<linearGradient id="marketing-cloud-white" x2="0" y2="1"><stop stop-color="#ffffff" /><stop offset="1" stop-color="#dfedff" /></linearGradient>
+<radialGradient id="marketing-graphite" cx="30%" cy="15%" r="90%"><stop stop-color="#657080" /><stop offset=".5" stop-color="#2a303c" /><stop offset="1" stop-color="#10151e" /></radialGradient>
+<radialGradient id="marketing-teal" cx="30%" cy="15%" r="90%"><stop stop-color="#8ff6d5" /><stop offset=".55" stop-color="#22c5a1" /><stop offset="1" stop-color="#0a8e7b" /></radialGradient>
+<linearGradient id="marketing-terminal" x2="0" y2="1"><stop stop-color="#233d4a" /><stop offset="1" stop-color="#112330" /></linearGradient>
+</defs>
+<g class="motion sage-motion"><path d="M-57 0Q-57-54 0-54Q57-54 57 0V27Q57 59 0 59Q-57 59-57 27Z" fill="url(#marketing-pink)" /><ellipse cx="-34" cy="66" rx="16" ry="9" fill="#df269e" /><ellipse cx="34" cy="66" rx="16" ry="9" fill="#df269e" />
+<g class="megaphone" transform="translate(41 25) rotate(-16)"><path d="M0 0L38-16V28L0 14Z" fill="#fff1cc" stroke="#e6a638" stroke-width="2" /><rect x="-9" y="0" width="12" height="15" rx="4" fill="#ffcf54" /><path d="M7 16L11 35H22L18 19" fill="#ffcf54" /><path d="M48-9L58-15M50 5H62M48 20L58 26" stroke="#ffcf54" stroke-width="4" stroke-linecap="round" /></g><g class="base-face" fill="#182b43"><ellipse class="eye" cx="-22" cy="-3" rx="6" ry="9" /><ellipse class="eye" cx="22" cy="-3" rx="6" ry="9" /><path d="M-12 18Q0 32 12 18" fill="none" stroke="#182b43" stroke-width="4" stroke-linecap="round" /></g><g class="expression-face" transform="translate(0 0) scale(0.48)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3" />
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e" /><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5" />
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65" /><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65" />
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29" />
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e" /><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e" />
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none" /><circle cx="50" cy="-7" r="3" fill="white" stroke="none" />
+  <path d="M-9 33Q3 27 18 31" />
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4" /><circle cx="82" cy="-53" r="6" />
+   <rect x="83" y="-99" width="66" height="37" rx="18" />
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3" /><circle class="thought-dot" cx="116" cy="-80" r="3" /><circle class="thought-dot" cx="130" cy="-80" r="3" /></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30" />
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21" />
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38" />
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none" />
+ </g>
+ 
+</g><g class="writing-prop" transform="translate(20 40) scale(0.42)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2" />
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round" />
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5" /><path d="M4 18L3 29L14 24" fill="#eac39b" /><path d="M3 29L4 23L8 26Z" fill="#20314c" /><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9" /></g>
+</g></g></svg><text x="382" y="432" text-anchor="middle" font-family="Arial" font-size="23" font-weight="700" fill="#24334b">Marketing</text><rect x="515" y="185" width="215" height="280" rx="26" fill="white"/><svg x="527" y="205" width="190" height="190" viewBox="-85 -85 180 180" overflow="visible"><defs>
+<radialGradient id="blogger-blue" cx="35%" cy="20%" r="85%"><stop stop-color="#48d3ff" /><stop offset=".48" stop-color="#09aaff" /><stop offset="1" stop-color="#0078e4" /></radialGradient>
+<radialGradient id="blogger-skin" cx="45%" cy="30%" r="80%"><stop stop-color="#fffdf7" /><stop offset=".75" stop-color="#fff0e3" /><stop offset="1" stop-color="#e8d1c3" /></radialGradient>
+<radialGradient id="blogger-green" cx="40%" cy="18%" r="90%"><stop stop-color="#c7ff67" /><stop offset=".5" stop-color="#8be538" /><stop offset="1" stop-color="#50b31d" /></radialGradient>
+<radialGradient id="blogger-pink" cx="35%" cy="20%" r="90%"><stop stop-color="#ff80e9" /><stop offset=".5" stop-color="#ff35cc" /><stop offset="1" stop-color="#dc08a3" /></radialGradient>
+<radialGradient id="blogger-yellow" cx="35%" cy="15%" r="95%"><stop stop-color="#ffe96b" /><stop offset=".55" stop-color="#ffca25" /><stop offset="1" stop-color="#f4a50b" /></radialGradient>
+<radialGradient id="blogger-purple" cx="30%" cy="15%" r="90%"><stop stop-color="#e7afff" /><stop offset=".5" stop-color="#bd64f5" /><stop offset="1" stop-color="#9428d2" /></radialGradient>
+<linearGradient id="blogger-ink" x2=".8" y2="1"><stop stop-color="#223249" /><stop offset="1" stop-color="#10172e" /></linearGradient>
+<linearGradient id="blogger-iris" x2="0" y2="1"><stop stop-color="#0c1527" /><stop offset=".55" stop-color="#061a31" /><stop offset="1" stop-color="#007eff" /></linearGradient>
+<radialGradient id="blogger-blush"><stop stop-color="#ff8c91" stop-opacity=".65" /><stop offset="1" stop-color="#ff8c91" stop-opacity="0" /></radialGradient>
+<radialGradient id="blogger-orange" cx="35%" cy="20%" r="90%"><stop stop-color="#ffdf9a" /><stop offset=".6" stop-color="#ffb455" /><stop offset="1" stop-color="#ed8b30" /></radialGradient>
+<linearGradient id="blogger-cloud-white" x2="0" y2="1"><stop stop-color="#ffffff" /><stop offset="1" stop-color="#dfedff" /></linearGradient>
+<radialGradient id="blogger-graphite" cx="30%" cy="15%" r="90%"><stop stop-color="#657080" /><stop offset=".5" stop-color="#2a303c" /><stop offset="1" stop-color="#10151e" /></radialGradient>
+<radialGradient id="blogger-teal" cx="30%" cy="15%" r="90%"><stop stop-color="#8ff6d5" /><stop offset=".55" stop-color="#22c5a1" /><stop offset="1" stop-color="#0a8e7b" /></radialGradient>
+<linearGradient id="blogger-terminal" x2="0" y2="1"><stop stop-color="#233d4a" /><stop offset="1" stop-color="#112330" /></linearGradient>
+</defs>
+<g class="motion sage-motion"><rect x="-56" y="-62" width="112" height="129" rx="22" fill="url(#blogger-purple)" /><path d="M-38-62V67" stroke="#8442c5" stroke-width="5" /><path d="M-62-41H-45M-62-18H-45M-62 5H-45M-62 28H-45M-62 51H-45" stroke="#e0c7ff" stroke-width="6" stroke-linecap="round" />
+<path d="M-22 40H25M-22 51H11" stroke="#e8d5ff" stroke-width="4" stroke-linecap="round" /><g class="quill"><path d="M32 28Q30-9 66-36Q83 1 32 28Z" fill="#fff4db" /><path d="M25 43L61-25M39 18L38 1M48 2L62 0" stroke="#d09b4d" stroke-width="3" stroke-linecap="round" /></g><g class="base-face" fill="#182b43"><ellipse class="eye" cx="-22" cy="-3" rx="6" ry="9" /><ellipse class="eye" cx="22" cy="-3" rx="6" ry="9" /><path d="M-12 18Q0 32 12 18" fill="none" stroke="#182b43" stroke-width="4" stroke-linecap="round" /></g><g class="expression-face" transform="translate(0 0) scale(0.48)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3" />
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e" /><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5" />
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65" /><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65" />
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29" />
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e" /><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e" />
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none" /><circle cx="50" cy="-7" r="3" fill="white" stroke="none" />
+  <path d="M-9 33Q3 27 18 31" />
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4" /><circle cx="82" cy="-53" r="6" />
+   <rect x="83" y="-99" width="66" height="37" rx="18" />
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3" /><circle class="thought-dot" cx="116" cy="-80" r="3" /><circle class="thought-dot" cx="130" cy="-80" r="3" /></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30" />
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21" />
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38" />
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none" />
+ </g>
+ 
+</g><g class="writing-prop" transform="translate(20 40) scale(0.42)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2" />
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round" />
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5" /><path d="M4 18L3 29L14 24" fill="#eac39b" /><path d="M3 29L4 23L8 26Z" fill="#20314c" /><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9" /></g>
+</g></g></svg><text x="622" y="432" text-anchor="middle" font-family="Arial" font-size="23" font-weight="700" fill="#24334b">Blogging</text><rect x="755" y="185" width="215" height="280" rx="26" fill="white"/><svg x="767" y="205" width="190" height="190" viewBox="-90 -90 180 185" overflow="visible"><defs>
+<radialGradient id="designer-blue" cx="35%" cy="20%" r="85%"><stop stop-color="#48d3ff" /><stop offset=".48" stop-color="#09aaff" /><stop offset="1" stop-color="#0078e4" /></radialGradient>
+<radialGradient id="designer-skin" cx="45%" cy="30%" r="80%"><stop stop-color="#fffdf7" /><stop offset=".75" stop-color="#fff0e3" /><stop offset="1" stop-color="#e8d1c3" /></radialGradient>
+<radialGradient id="designer-green" cx="40%" cy="18%" r="90%"><stop stop-color="#c7ff67" /><stop offset=".5" stop-color="#8be538" /><stop offset="1" stop-color="#50b31d" /></radialGradient>
+<radialGradient id="designer-pink" cx="35%" cy="20%" r="90%"><stop stop-color="#ff80e9" /><stop offset=".5" stop-color="#ff35cc" /><stop offset="1" stop-color="#dc08a3" /></radialGradient>
+<radialGradient id="designer-yellow" cx="35%" cy="15%" r="95%"><stop stop-color="#ffe96b" /><stop offset=".55" stop-color="#ffca25" /><stop offset="1" stop-color="#f4a50b" /></radialGradient>
+<radialGradient id="designer-purple" cx="30%" cy="15%" r="90%"><stop stop-color="#e7afff" /><stop offset=".5" stop-color="#bd64f5" /><stop offset="1" stop-color="#9428d2" /></radialGradient>
+<linearGradient id="designer-ink" x2=".8" y2="1"><stop stop-color="#223249" /><stop offset="1" stop-color="#10172e" /></linearGradient>
+<linearGradient id="designer-iris" x2="0" y2="1"><stop stop-color="#0c1527" /><stop offset=".55" stop-color="#061a31" /><stop offset="1" stop-color="#007eff" /></linearGradient>
+<radialGradient id="designer-blush"><stop stop-color="#ff8c91" stop-opacity=".65" /><stop offset="1" stop-color="#ff8c91" stop-opacity="0" /></radialGradient>
+<radialGradient id="designer-orange" cx="35%" cy="20%" r="90%"><stop stop-color="#ffdf9a" /><stop offset=".6" stop-color="#ffb455" /><stop offset="1" stop-color="#ed8b30" /></radialGradient>
+<linearGradient id="designer-cloud-white" x2="0" y2="1"><stop stop-color="#ffffff" /><stop offset="1" stop-color="#dfedff" /></linearGradient>
+<radialGradient id="designer-graphite" cx="30%" cy="15%" r="90%"><stop stop-color="#657080" /><stop offset=".5" stop-color="#2a303c" /><stop offset="1" stop-color="#10151e" /></radialGradient>
+<radialGradient id="designer-teal" cx="30%" cy="15%" r="90%"><stop stop-color="#8ff6d5" /><stop offset=".55" stop-color="#22c5a1" /><stop offset="1" stop-color="#0a8e7b" /></radialGradient>
+<linearGradient id="designer-terminal" x2="0" y2="1"><stop stop-color="#233d4a" /><stop offset="1" stop-color="#112330" /></linearGradient>
+</defs>
+<g class="motion sage-motion"><path d="M-64 0C-68-43-33-68 9-63C62-57 80-18 58 9C44 26 17 4 14 27C12 44 41 40 27 58C-4 88-62 48-64 0Z" fill="url(#designer-orange)" /><circle cx="-42" cy="-32" r="9" fill="#ff60bb" /><circle cx="-16" cy="-47" r="9" fill="#9f73f7" /><circle cx="15" cy="-45" r="9" fill="#34c8d5" /><circle cx="42" cy="-26" r="9" fill="#8be545" /><g class="paintbrush" transform="rotate(22 49 32)"><path d="M43 8H54L52 65Q48 75 44 65Z" fill="#8765c2" /><path d="M41-3H56V16H41Z" fill="#dce9f5" /><path d="M41-3Q37-22 49-31Q60-20 56-3Z" fill="#30c7be" /></g><g class="base-face" fill="#182b43"><ellipse class="eye" cx="-22" cy="-3" rx="6" ry="9" /><ellipse class="eye" cx="22" cy="-3" rx="6" ry="9" /><path d="M-12 18Q0 32 12 18" fill="none" stroke="#182b43" stroke-width="4" stroke-linecap="round" /></g><g class="expression-face" transform="translate(0 0) scale(0.48)" stroke="#15283e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true">
+ <g class="expression expression-happy">
+  <path d="M-62 3Q-46-21-30 3M30 3Q46-21 62 3" />
+  <path d="M-20 28Q0 62 20 28Z" fill="#15283e" /><path d="M-10 40Q0 33 10 40" stroke="#ff8aa5" />
+  <ellipse cx="-65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65" /><ellipse cx="65" cy="25" rx="12" ry="7" fill="#ff93a7" stroke="none" opacity=".65" />
+ </g>
+ <g class="expression expression-thinking">
+  <path d="M-63-23L-32-29M31-29Q46-38 61-29" />
+  <ellipse cx="-46" cy="0" rx="11" ry="16" fill="#15283e" /><ellipse cx="46" cy="0" rx="11" ry="16" fill="#15283e" />
+  <circle cx="-42" cy="-7" r="3" fill="white" stroke="none" /><circle cx="50" cy="-7" r="3" fill="white" stroke="none" />
+  <path d="M-9 33Q3 27 18 31" />
+  <g class="thought-bubble" stroke="#cad7e9" stroke-width="1.5" fill="white">
+   <circle cx="70" cy="-40" r="4" /><circle cx="82" cy="-53" r="6" />
+   <rect x="83" y="-99" width="66" height="37" rx="18" />
+   <g fill="#7e9abd" stroke="none"><circle class="thought-dot" cx="102" cy="-80" r="3" /><circle class="thought-dot" cx="116" cy="-80" r="3" /><circle class="thought-dot" cx="130" cy="-80" r="3" /></g>
+  </g>
+ </g>
+ <g class="expression expression-writing">
+  <path d="M-62-5Q-46 12-30-5M30-5Q46 12 62-5M-57-24L-33-20M33-20L57-24M-9 30Q0 36 9 30" />
+ </g>
+ 
+ 
+ 
+ <g class="expression expression-sad">
+  <path d="M-64-21L-33-31M33-31L64-21" />
+  <path d="M-60 0Q-46 10-32 0M32 0Q46 10 60 0M-17 38Q0 20 17 38" />
+  <path class="tear" d="M62 12C59 20 53 26 56 31C60 37 69 33 68 27Z" fill="#63c9ff" stroke="none" />
+ </g>
+ 
+</g><g class="writing-prop" transform="translate(20 40) scale(0.42)" aria-hidden="true">
+ <rect x="-32" y="-24" width="67" height="70" rx="7" fill="#edf5ff" stroke="#a7c4e8" stroke-width="2" />
+ <path d="M-20-10H21M-20 3H21M-20 16H8M-20 29H14" stroke="#a7c4e8" stroke-width="3" stroke-linecap="round" />
+ <g class="pencil"><path d="M4 18L30-25L40-19L14 24Z" fill="#ffcf4a" stroke="#d79b22" stroke-width="1.5" /><path d="M4 18L3 29L14 24" fill="#eac39b" /><path d="M3 29L4 23L8 26Z" fill="#20314c" /><path d="M30-25L34-31Q36-34 39-32L44-29Q47-27 44-23L40-19" fill="#fc86a9" /></g>
+</g></g></svg><text x="862" y="432" text-anchor="middle" font-family="Arial" font-size="23" font-weight="700" fill="#24334b">Design</text><text x="515" y="535" text-anchor="middle" fill="#6b7d98" font-family="Arial" font-size="23">15 selectable characters. One shared visual system.</text></svg>

@@ -1,0 +1,50 @@
+X POST 1 — ANIMATED CREW
+Meet the Pilo crew ✨ 15 animated characters in HTML, CSS & JavaScript: thinking, writing, happy and sad states, plus a role-based avatar picker.
+
+Code + demo: https://github.com/iamcharlesb/pilo/tree/main/examples/pilo-animation
+
+#Pilo #CSS #BuildInPublic
+
+MEDIA: pilo-crew-animation.gif
+ALT TEXT: Pilo’s blue mascot surrounded by 14 colorful animated characters, including a sunglasses heart, a yellow character with glasses, a coding terminal, a marketing character, a notebook, and a designer’s palette.
+
+X POST 2 — ROLE IDENTITIES
+Coding gets a terminal. Marketing gets a megaphone. Blogging gets a notebook. Design gets a palette.
+
+Pilo now has 15 selectable characters and persistent avatar choices.
+
+https://github.com/iamcharlesb/pilo
+
+#AIAgents #UX #BuildInPublic
+
+MEDIA: pilo-role-picker.png
+
+REDDIT POST 1 — SIDE PROJECT / ANIMATION
+Title: I built a 15-character animated crew for my local AI workspace using HTML, CSS and SVG
+
+Disclosure: I’m building Pilo.
+
+I wanted a visual identity for the agents in my local workspace, so I built a crew of 15 characters using HTML, CSS, SVG and JavaScript. The reference scene has thinking, writing, sad and happy modes, a tempo slider, pause/play, and a group dance. It runs offline without an external animation library.
+
+In the actual app, expressions reflect existing work events rather than starting model calls. Idle sidebar avatars stay still, and reduced-motion preferences are respected.
+
+The most useful bug fix was in saved preferences: changing a role’s default did not replace an explicitly saved icon. I added a scoped, versioned migration so the correction applies once without overriding future choices.
+
+Code and reference scene: https://github.com/iamcharlesb/pilo/tree/main/examples/pilo-animation
+
+For interfaces with several agents, do expressive avatars help you scan state, or would you prefer static icons and text only?
+
+REDDIT POST 2 — ROLE IDENTITY / PRODUCT DESIGN
+Title: A small multi-agent UI lesson: changing a default avatar does not update a saved choice
+
+Disclosure: I’m building Pilo, a local, single-operator agent workspace.
+
+I added a 15-character avatar picker with dedicated coding, marketing, blogging and design characters. Then several saved agents still showed the same old character. The renderer was doing what the saved state asked it to do: explicit choices took precedence over role fallbacks.
+
+The fix was a targeted migration of the affected saved choices, with a version marker to avoid overriding later owner selections. The picker, catalog, chat and sidebar now share the same SVG artwork. Sidebar identities are 38px after a live size review, while compact header controls keep their sizing.
+
+I’m not claiming a measured productivity gain. This is an implementation and design tradeoff I thought others building customizable interfaces might find useful.
+
+Code: https://github.com/iamcharlesb/pilo
+
+When a product introduces a new visual system, how do you decide which old preferences to migrate and which to leave alone?

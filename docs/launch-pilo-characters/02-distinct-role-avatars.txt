@@ -1,0 +1,46 @@
+A distinct face for every role: Pilo’s new avatar picker
+
+Why recognizable agent identities need both role defaults and persistent owner choices.
+
+A workspace can have a coding agent, a marketer, a blogger, and a founder’s operations assistant. If all four use the same icon, every switch starts with reading a label. Pilo’s new character picker gives those roles a more recognizable visual identity.
+
+I’m building Pilo, a local agent workspace for a single operator. The new picker contains 15 characters, including a coding terminal, a pink marketing character with a megaphone, a purple blogging notebook, and a designer’s palette with a brush.
+
+The goal is practical: make a role easier to recognize while keeping its name and instructions visible. An icon is not a replacement for a role description or evidence of an agent’s expertise.
+
+Start with a sensible role default
+
+Pilo selects a default character from the bot’s role. Coding and terminal work use the coding character. Marketing, blogging, and design have their own artwork. The actual saved roster can then use different members of the crew so that adjacent agents are easier to distinguish.
+
+For example, Reddit Community Growth now uses the blue beret character, SEO Specialist uses the yellow character with glasses, Instagram uses the sunglasses heart, and Founder Operator uses the blue Pilo mascot.
+
+These are visual defaults and owner choices. They do not change the underlying bot instructions, grant it tools, or make it start work.
+
+The persistence bug that mattered
+
+During the update, several saved agents kept showing the same character even after the role defaults changed. The reason was ordinary application state: an explicit saved character selection correctly took precedence over a fallback.
+
+Changing the fallback alone could not repair what the user actually saw.
+
+The fix was to update the specific saved choices that needed correction. The current migration is versioned, so it runs once and leaves later owner selections alone. Custom silhouettes and uploaded portraits keep their existing rendering path.
+
+That distinction is worth making in any customization feature. A new default is not the same operation as a migration of an existing preference.
+
+The picker uses the same renderer as the product
+
+The catalog, chat, sidebar, and picker share vector artwork. The controls can preview the selected character before it is saved. Classic shape options remain available alongside the new crew.
+
+Sidebar icons are now 38 pixels. We first increased them from 24 to 40 pixels, then reduced them by two pixels after reviewing the live interface. The change improves their visibility without changing the compact engine and composer controls.
+
+The app also replaces the previous pair of engine buttons with a dropdown labeled Open AI and Pilo Agent. The existing engine values remain unchanged underneath; the interface change does not introduce a new provider or a new execution capability.
+
+What this update does and does not establish
+
+The latest complete browser-runtime suite passed 513 tests, including checks for saved choices, role selection, rendering, and interface behavior. That is verification of the implementation, not evidence that a particular icon increases conversion or saves a measured amount of time.
+
+Pilo remains a local, single-operator tool. The character system adds identity and status cues to that workspace. It does not establish multi-user account isolation, enterprise readiness, or a security boundary.
+
+Code, reference scene, and regeneration instructions:
+https://github.com/iamcharlesb/pilo/tree/main/examples/pilo-animation
+
+For people building multi-agent interfaces: would you prefer a role-based default, a unique character per saved agent, or a deliberately small shared visual vocabulary?

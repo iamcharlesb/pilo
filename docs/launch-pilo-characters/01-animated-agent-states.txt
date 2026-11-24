@@ -1,0 +1,40 @@
+Pilo’s animated agents make ongoing work easier to follow
+
+A small visual language for a local AI agent workspace, built with HTML, CSS, SVG, and JavaScript.
+
+When several agents share a workspace, a list of names can become difficult to scan. A status label helps, but the operator still has to read it and connect it to the right conversation. Pilo now adds a recognizable character and a small set of expressions alongside that text.
+
+I’m building Pilo, a local, single-operator agent workspace. This update introduces a crew of 15 vector characters, including the blue Pilo mascot, a sunglasses heart, a yellow character with glasses, and dedicated characters for coding, marketing, blogging, and design.
+
+The characters are playful. The implementation has a practical boundary: their expressions are presentation state, driven by events the application already receives.
+
+What the expressions mean
+
+The reference scene supports Original, Thinking, Writing, Sad, and Happy modes. In the application, ordinary research or inspection steps use a thinking expression. Document creation and recognized file-writing steps can show a writing expression. A failed step can show sadness, and a successful completion can show happiness.
+
+These are interface cues, not claims about a model’s internal emotions or reasoning. Textual status remains the source of detail. A character does not establish that a task succeeded; the task result does.
+
+One important design decision was to keep notification and animation logic separate from execution. Rendering an expression does not call a model, open a browser, or schedule paid work. It simply reflects an existing event.
+
+Motion that stays out of the way
+
+Constant movement is easy to add and difficult to live with. Pilo keeps idle sidebar identities still and enables expression motion for active or working avatars. The styles also respect the operating system’s reduced-motion preference.
+
+The standalone demo is more expressive. Each character has its own motion, and the controls allow pausing playback, changing the tempo, switching expressions, or making the whole crew dance. That makes it useful as a visual reference and a small implementation example.
+
+The scene runs offline in a browser. It uses HTML, CSS, SVG, and JavaScript rather than an external animation library. The exported GIF is a shareable preview; the HTML contains the interactive controls.
+
+Shared artwork, consistent identity
+
+The same vector artwork is used across the app’s sidebar, chat, catalog, and avatar picker. Each rendered avatar gets its own SVG gradient identifiers, so several characters can coexist without their colors colliding in the page.
+
+This is a small detail with a visible consequence: a shared SVG definition should not make one bot inherit another bot’s colors.
+
+What shipped
+
+The update includes 15 selectable characters, the interactive reference scene, runtime expression mapping, reduced-motion styles, and larger sidebar identities. The latest complete browser-runtime test run passed 513 tests. Those checks cover implementation behavior; they do not claim a measured productivity improvement.
+
+Source and interactive demo instructions:
+https://github.com/iamcharlesb/pilo/tree/main/examples/pilo-animation
+
+The question I’m exploring next is simple: how much status can a small character communicate before it becomes visual noise?

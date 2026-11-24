@@ -1,0 +1,24 @@
+SUBREDDIT RESEARCH — CANDIDATES, NOT APPROVED POSTING DESTINATIONS
+
+No posts have been submitted by this packet. Check the live rules, required flairs, account eligibility, AI-content policies and promotion threads before submitting. Do not bulk-post identical copy.
+
+1. r/SideProject — working project demo and specific feedback question.
+2. r/AI_Agents — agent interface and status-event design.
+3. r/BuildInPublic — implementation progress and lessons.
+4. r/indiehackers — owner-built product iteration.
+5. r/SaaS — applicable product/design discussion; promotion may be restricted.
+6. r/EntrepreneurRideAlong — concrete product iteration story.
+7. r/webdev — technical SVG/CSS architecture; check showcase-day restrictions.
+8. r/frontend — component and state-rendering discussion.
+9. r/css — CSS animation implementation; avoid generic promotion.
+10. r/javascript — browser implementation and reusable SVG rendering.
+11. r/UXDesign — preference migration and status-cue design; no assumed promotion permission.
+12. r/userexperience — role identity and interface tradeoffs; check research/promotion limits.
+13. r/InternetIsBeautiful — only if a publicly runnable, free demo meets current rules.
+14. r/TrueOpenSource — only after license and live promotion eligibility are verified.
+15. r/opensource — hold; reported restrictions on AI-related projects need direct verification.
+16. r/LocalLLaMA — hold; an avatar announcement is a weak local-inference fit, and AI-generated/self-promotional content may be restricted.
+17. r/ArtificialInteligence — AI product discussion if current rules permit.
+18. r/ChatGPTCoding — only if implementation/showcase rules allow this topic.
+
+Direct rules pages checked through web access for SideProject, AI_Agents, InternetIsBeautiful and webdev returned rule-page shells without readable rules. Their promotion eligibility remains unverified. Third-party rule summaries disagree, so they are not used as authorization to publish.
