@@ -21,17 +21,16 @@ The post shows the prepared caption, GitHub source link, #Pilo #CSS #BuildInPubl
 
 Medium
 - Correct account @iamcharlesb was verified in Firefox.
-- Article 1 is saved as draft cc1d57aa2d35, with its animation attached:
-https://medium.com/p/cc1d57aa2d35/edit
-- Article 1 reached publication settings with its animation attached. Tags and final publication are not yet verified.
-- The second article remains prepared locally in 02-distinct-role-avatars.txt.
-- The user explicitly approved publishing both stories with subscriber email notifications enabled. Do not ask again or turn notifications off.
-- No Medium publication is claimed by this status file. The computer-use service repeatedly failed to reconnect after the settings page. Inspect the existing draft/publication state before retrying, to avoid duplicate publication.
+- Article 1 published with the animation attached:
+https://medium.com/@iamcharlesb/pilos-animated-agents-make-ongoing-work-easier-to-follow-cc1d57aa2d35
+Verified topics: Artificial Intelligence, User Experience, CSS, JavaScript, Open Source.
+- Article 2 published with the actual avatar-picker screenshot and descriptive alt text:
+https://medium.com/@iamcharlesb/a-distinct-face-for-every-role-pilos-new-avatar-picker-624e93a1f51f
+Verified topics: Artificial Intelligence, Product Design, User Experience, Open Source.
+- Both final public pages were verified, including author, article text, media, and topics. Medium displayed “Your story has been published and sent!” for each. Subscriber notifications remained enabled, as explicitly authorized by the user.
 
-Pending
-- Topic tags for Medium.
-- Subscriber emails are authorized: user selected “Publish and notify subscribers.” Leave the checkbox enabled.
-- Publish both Medium articles and verify final URLs.
-- Publish the second role-identity announcement on X with its feature image.
+Second X announcement
+https://x.com/Charles04724470/status/2125137054120198170
+Published with the coding, marketing, blogging, and design feature image, descriptive alt text, GitHub link, and #AIAgents #UX #BuildInPublic. X displayed “Your post was sent.” The published timeline entry, text, media link, and permalink were verified.
 
-The original GIF post is already published. Reconcile existing posts before any retry to avoid duplicates.
+All six planned publications are verified. Reconcile these existing posts before any retry to avoid duplicates.
