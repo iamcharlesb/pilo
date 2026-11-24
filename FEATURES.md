@@ -42,3 +42,5 @@ Creating a huddle starts no model request. Sending a question may incur provider
 Pilo is a local, single-operator tool. Model providers can charge for requests. Runtime approval and permission checks govern actions; notifications do not authorize actions or recurring paid work. Origin checks do not isolate local accounts or authenticate every local process. Named bots are independent AI assistants, with no affiliation or endorsement by the named people or firms. Financial analysis is informational and requires verification, not personalized financial advice.
 
 The screen recorder includes an optional guided Pilo walkthrough with actual catalog and workspace Help clicks, a visible pointer and captions. It preserves drafts, stops automation on operator input, and never submits model work.
+
+Open `/demo` in the local Pilo web interface to play the guided walkthrough without recording. Optional local spoken narration plays with scene actions and is included directly in saved WebM audio, with optional microphone mixing.
