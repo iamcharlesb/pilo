@@ -1,12 +1,35 @@
 # Pilo
 
-[Roadmap](docs/pilo-roadmap.md) · [Features](FEATURES.md) · [What has changed](CHANGELOG.md)
+[![CI](https://github.com/iamcharlesb/pilo/actions/workflows/ci.yml/badge.svg)](https://github.com/iamcharlesb/pilo/actions/workflows/ci.yml)
+[![Node.js >= 22.12](https://img.shields.io/badge/node-%3E%3D22.12-339933?logo=node.js&logoColor=white)](https://nodejs.org)
+[![Pure Node.js](https://img.shields.io/badge/runtime-Pure%20Node.js-111827)](ROADMAP.md)
+[![MCP & A2A](https://img.shields.io/badge/protocols-MCP%20%7C%20A2A%20%7C%20Ollama-2563EB)](docs/agent-gateway.md)
+
+[Agent Gateway](docs/agent-gateway.md) · [Roadmap](ROADMAP.md) · [Features](FEATURES.md) · [What has changed](CHANGELOG.md) · [Contributing](CONTRIBUTING.md)
 
 <img src="docs/assets/pilo-social.png" alt="Pilo and its specialist bots" width="480" />
 
-**Your Personal Bot inspired by Grok Bots — Source-Available**
+**Pure Node.js AI Agent Runtime, Native Agent Gateway (MCP + A2A + Any Model), and Local Specialist Bots — Source-Available**
 
-Pilo helps you delegate research, writing, coding, marketing, job-search preparation, and permitted browser actions to personal and specialist bots. It currently runs on your computer. Hosted model requests can still incur charges; reducing unnecessary token usage is a design goal, not a verified savings guarantee.
+Pilo helps you delegate research, writing, coding, marketing, job-search preparation, and permitted browser actions to personal and specialist bots — powered by our own **pure Node.js agent runner** (no `@openai/agents` SDK lock-in) and a built-in **Agent Gateway** that routes **MCP tools**, **A2A agents**, and **any LLM** (OpenAI, Anthropic, Qwen, Kimi, Gemini, xAI, or local **Ollama**). It runs on your computer. Hosted model requests can still incur charges; reducing unnecessary token usage is a design goal, not a verified savings guarantee.
+
+## Key Capabilities
+
+- **Native Agent Gateway ([docs/agent-gateway.md](docs/agent-gateway.md))**: AI-native Node.js gateway for **MCP federation** (`/mcp`), **A2A discovery & cancellable tasks** (`/.well-known/agent.json`, `/a2a/*`), and **unified LLM routing** (`/v1/chat/completions`, `/v1/completions`) with automatic cloud-to-local **Ollama failover**.
+- **Zero-Trust Security & Governance**: Fail-closed JWT & API-key auth, RBAC-filtered tool/agent/model discovery, pattern guardrails, sliding-window rate limits, pre-invocation token budgets, secret redaction, and automated secret scanning.
+- **First-Class Local Ollama Support**: Native `ChatOllama` tool calling (`/api/chat` `tools`), JSON Schema structured outputs, `OllamaLLM` completions, `/api/tags` model discovery, and one-step Ollama agent registration.
+- **Pure Node.js Execution Engine**: Supports both Responses API and Chat Completions API without `@openai/agents` (eliminating `--legacy-peer-deps`), with strict tool-arg validation, `finish_reason` / status checks, and `AbortSignal` cancellation.
+- **Multi-Bot Huddles & DAG Workflows**: Run named Huddles across specialist bots, deterministic multi-step workflows, grounded coding bots (git-aware code index + hash-checked patching), and zero-token RSS/page/JSON watchers.
+
+<img src="docs/assets/pilo-agent-gateway.jpg" alt="Pilo Agent Gateway architecture for MCP, A2A, and any model including local Ollama" width="760" />
+
+```mermaid
+flowchart LR
+    C["Apps · Pilo Desktop · CLI\nMCP / A2A Clients"] --> GW["Pilo Agent Gateway\nAuth · RBAC · Guardrails · Budgets · Failover"]
+    GW --> MCP["MCP Tool Backends"]
+    GW --> A2A["Specialist & Coding Bots\n(Pure Node.js Runner)"]
+    GW --> LLM["OpenAI · Anthropic · Qwen\nKimi · Gemini · Ollama (Local)"]
+```
 
 ## Independent AI assistants
 
@@ -18,24 +41,19 @@ Named bots are AI assistants informed by public material. They are not the named
 - The application lives in the separate **public** [iamcharlesb/browser-agent](https://github.com/iamcharlesb/browser-agent) submodule. Clone recursively to include it; no private-repository access is required.
 - Have your chosen model provider credentials and model ID ready, or configure a local model. Google sign-in and MongoDB are optional.
 
-## Install and launch
+## Quickstart (Install & Launch)
 
-Clone with submodules so the application code is included:
+> **Important:** Use `--recurse-submodules` when cloning (GitHub's "Download ZIP" omits the `node/browser_agent` submodule).
 
 ```bash
 git clone --recurse-submodules https://github.com/iamcharlesb/pilo.git
 cd pilo
-npm ci
-npm --prefix node/browser_agent ci --legacy-peer-deps
-cd node/browser_agent
-npx playwright install chromium
-cd ../..
+npm ci && npm --prefix node/browser_agent ci
+npm --prefix node/browser_agent exec playwright install chromium
 npm run desktop
 ```
 
-The last command builds and opens Pilo in a desktop window. Keep the terminal running while you use it. The desktop server uses port 8766 by default.
-
-Both repositories are public. Downloading this repository as a ZIP does not include the application submodule; use the recursive clone above. The runtime currently needs `--legacy-peer-deps` for its OpenAI SDK/Zod peer dependency conflict.
+The last command builds and opens Pilo in a desktop window (`http://127.0.0.1:8766`). Keep the terminal running while you use it. Both `iamcharlesb/pilo` and `iamcharlesb/browser-agent` are public and install cleanly with standard `npm ci` (no `--legacy-peer-deps` required).
 
 ## Connect a model
 
@@ -80,7 +98,7 @@ git pull
 git submodule sync --recursive
 git submodule update --init --recursive
 npm ci
-npm --prefix node/browser_agent ci --legacy-peer-deps
+npm --prefix node/browser_agent ci
 npm run desktop
 ```
 
