@@ -50,9 +50,9 @@ cp node/browser_agent/.env.example node/browser_agent/.env
 
 | Variable | Required | Default / Example | Purpose |
 | --- | --- | --- | --- |
-| `BROWSER_AGENT_PROVIDER` | Yes | `openai`, `qwen`, `kimi`, `anthropic`, `xai`, `ollama`, `compatible` | Active model provider |
+| `BROWSER_AGENT_PROVIDER` | Yes | `openai`, `ollama`, `huggingface`, `deepseek`, `qwen`, `kimi`, `zhipu`, `minimax`, `yi`, `baichuan`, `doubao`, `stepfun`, `siliconflow`, `anthropic`, `xai`, `compatible` | Active model provider |
 | `BROWSER_AGENT_MODEL` | Optional | *(blank)* | Explicit model override (leave blank to use provider preset) |
-| `OPENAI_API_KEY` / `QWEN_API_KEY` / `KIMI_API_KEY` | One key (cloud) | *(secret)* | Fill only the key for your chosen cloud provider |
+| `OPENAI_API_KEY` / `HF_TOKEN` / `DEEPSEEK_API_KEY` / `QWEN_API_KEY` / `KIMI_API_KEY` / `ZHIPU_API_KEY` / `MINIMAX_API_KEY` / `YI_API_KEY` / `BAICHUAN_API_KEY` / `DOUBAO_API_KEY` / `STEPFUN_API_KEY` / `SILICONFLOW_API_KEY` | One key (cloud) | *(secret)* | Fill only the key for your chosen cloud provider |
 | `OLLAMA_MODEL` | If using Ollama | `llama3.2` or `qwen2.5-coder` | Pulled local Ollama model ID |
 | `OLLAMA_BASE_URL` | If using Ollama | `http://127.0.0.1:11434/v1` | Local Ollama OpenAI-compatible endpoint |
 | `OLLAMA_API_MODE` | If using Ollama | `chat` | Chat Completions mode for Ollama |

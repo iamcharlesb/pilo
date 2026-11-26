@@ -1,0 +1,26 @@
+[Unit]
+Description=Pilo personal cloud workspace (private loopback)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=pilo
+Group=pilo
+WorkingDirectory=/opt/pilo/node/browser_agent
+Environment=HOME=/var/lib/pilo
+EnvironmentFile=/etc/pilo/runtime.env
+ExecStart=/usr/bin/xvfb-run -a /bin/bash /opt/pilo/tools/oracle/serve.sh
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=45
+KillMode=control-group
+UMask=0077
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/pilo
+# No OCI credentials, instance principal policy, sudo, or Docker socket for this user.
+
+[Install]
+WantedBy=multi-user.target
